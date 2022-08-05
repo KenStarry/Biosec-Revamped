@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="text_900">26sp</dimen>
+    <dimen name="text_800">24sp</dimen>
+    <dimen name="text_700">20sp</dimen>
+    <dimen name="text_500">18sp</dimen>
+    <dimen name="text_300">16sp</dimen>
+    <dimen name="text_100">14sp</dimen>
+    <dimen name="text_50">12sp</dimen>
+
+    <dimen name="layout_900">26sp</dimen>
+    <dimen name="layout_800">24sp</dimen>
+    <dimen name="layout_700">20sp</dimen>
+    <dimen name="layout_500">18sp</dimen>
+    <dimen name="layout_300">16sp</dimen>
+    <dimen name="layout_100">14sp</dimen>
+    <dimen name="layout_50">12sp</dimen>
+
+    <dimen name="card_small">40dp</dimen>
+    <dimen name="card_medium">60dp</dimen>
+    <dimen name="card_big">70dp</dimen>
+</resources>
