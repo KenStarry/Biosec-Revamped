@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/bottomHome"
+        android:title="Home"
+        android:icon="@drawable/ic_home"/>
+
+    <item
+        android:id="@+id/bottomGroups"
+        android:title="Groups"
+        android:icon="@drawable/ic_dashboard"/>
+
+    <item
+        android:id="@+id/bottomGenerate"
+        android:title="Generate"
+        android:icon="@drawable/ic_lock_reset"/>
+
+    <item
+        android:id="@+id/bottomSettings"
+        android:title="Settings"
+        android:icon="@drawable/ic_settings"/>
+</menu>
