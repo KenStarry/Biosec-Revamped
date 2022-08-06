@@ -5,8 +5,10 @@
       <map>
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/drawable/ic_copy.xml" value="0.1855" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/drawable/ic_grain.xml" value="0.1855" />
+        <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/drawable/ic_security.xml" value="0.1855" />
+        <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/drawable/ic_verified.xml" value="0.1855" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/layout/password_item.xml" value="0.25" />
+        <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/layout/password_item.xml" value="0.33" />
       </map>
     </option>
   </component>
