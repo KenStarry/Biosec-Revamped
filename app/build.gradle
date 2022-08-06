@@ -36,7 +36,7 @@ dependencies {
 
     def room_version = "2.4.3"
     def lifecycle_version = "2.6.0-alpha01"
-    def lottieVersion = "3.4.0"
+    def lottieVersion = '5.2.0'
 
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.4.2'
@@ -52,8 +52,13 @@ dependencies {
     implementation "androidx.room:room-runtime:$room_version"
     kapt("androidx.room:room-compiler:$room_version")
 
-    implementation 'io.reactivex.rxjava2:rxjava:2.2.16'
+    //  Java RX - for single database querying
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.21'
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
 
+    //  Lottie animations
     implementation "com.airbnb.android:lottie:$lottieVersion"
+
+    //  Swipe gestures
+    implementation 'com.github.xabaras:RecyclerViewSwipeDecorator:1.4'
 }

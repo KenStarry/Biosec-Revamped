@@ -8,11 +8,13 @@ import androidx.appcompat.widget.Toolbar
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.biosec.R
 import com.example.biosec.adapters.PasswordsAdapter
 import com.example.biosec.fragments.AddPasswordDialog
+import com.example.biosec.utils.SwipeGesture
 import com.example.biosec.viewmodels.PasswordsViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -47,6 +49,7 @@ class MainActivity : AppCompatActivity() {
 
         bottomNavBar = findViewById(R.id.bottomNavBar)
         coordinatorLayout = findViewById(R.id.mainCoordinatorLayout)
+        recyclerView = findViewById(R.id.allPasswordsRecyclerView)
 
         toolbar = findViewById(R.id.mainToolbar)
         setSupportActionBar(toolbar)
@@ -67,11 +70,31 @@ class MainActivity : AppCompatActivity() {
         }
 
         //  Item Touch helper
+        val swipeGesture = object : SwipeGesture(this) {
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+
+                when (direction) {
+                    ItemTouchHelper.LEFT -> {
+
+                        //  Delete the item
+                        val password = adapter.getPasswordAt(viewHolder.adapterPosition)
+                        viewModel.deletePass(password)
+                    }
+
+                    ItemTouchHelper.RIGHT -> {
+                        //  Do something
+                    }
+                }
+            }
+        }
+
+        val touchHelper = ItemTouchHelper(swipeGesture)
+        touchHelper.attachToRecyclerView(recyclerView)
     }
 
     private fun setupRecyclerView() {
         adapter = PasswordsAdapter()
-        recyclerView = findViewById(R.id.allPasswordsRecyclerView)
 
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter

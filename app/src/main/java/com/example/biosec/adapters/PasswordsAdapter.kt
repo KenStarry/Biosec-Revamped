@@ -28,7 +28,7 @@ class PasswordsAdapter : ListAdapter<Passwords, PasswordsAdapter.PasswordHolder>
         }
     }
 
-    fun getNoteAt(position: Int) = getItem(position)
+    fun getPasswordAt(position: Int) = getItem(position)
 
     class PasswordHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 

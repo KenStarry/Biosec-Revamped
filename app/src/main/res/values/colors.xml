@@ -3,6 +3,8 @@
     <!--Custom Colors-->
     <color name="blue">#4CC9F0</color>
     <color name="pink">#D90368</color>
+    <color name="delete">#FF1D15</color>
+    <color name="archive">#3EC300</color>
 
     <color name="blue_light">#EDFBFF</color>
 
