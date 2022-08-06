@@ -65,6 +65,8 @@ class MainActivity : AppCompatActivity() {
             snackbar()
             return@setOnLongClickListener true
         }
+
+        //  Item Touch helper
     }
 
     private fun setupRecyclerView() {
