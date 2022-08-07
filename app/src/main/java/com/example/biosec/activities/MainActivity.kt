@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -31,18 +32,27 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mainFab: FloatingActionButton
     private lateinit var coordinatorLayout: CoordinatorLayout
     private lateinit var bottomNavBar: BottomNavigationView
+    private lateinit var emptyTaskLottie: LinearLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         initializeVariables()
-
         setupRecyclerView()
 
         viewModel = ViewModelProvider(this).get(PasswordsViewModel::class.java)
         viewModel.getAllPasswords().observe(this) {
             adapter.submitList(it)
+
+            //  if the list is empty, show the lottie animation
+            if (it.isEmpty()) {
+                emptyTaskLottie.visibility = View.VISIBLE
+                recyclerView.visibility = View.GONE
+            } else {
+                emptyTaskLottie.visibility = View.GONE
+                recyclerView.visibility = View.VISIBLE
+            }
         }
 
     }
@@ -61,6 +71,14 @@ class MainActivity : AppCompatActivity() {
             R.id.sortMenu -> {
                 toast("Sort option selected")
             }
+
+            R.id.archiveMenu -> {
+                toast("Archive option selected")
+            }
+
+            R.id.hideDetailsMenu -> {
+                toast("Hide details option")
+            }
         }
 
         return super.onOptionsItemSelected(item)
@@ -71,6 +89,7 @@ class MainActivity : AppCompatActivity() {
         bottomNavBar = findViewById(R.id.bottomNavBar)
         coordinatorLayout = findViewById(R.id.mainCoordinatorLayout)
         recyclerView = findViewById(R.id.allPasswordsRecyclerView)
+        emptyTaskLottie = findViewById(R.id.emptyLottieHolder)
 
         toolbar = findViewById(R.id.mainToolbar)
         setSupportActionBar(toolbar)

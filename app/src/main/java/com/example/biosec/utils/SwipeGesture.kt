@@ -41,7 +41,9 @@ abstract class SwipeGesture(context: Context) :
             .addSwipeRightBackgroundColor(archiveColor)
             .addSwipeRightActionIcon(archiveIcon)
             .addSwipeLeftLabel("Delete")
+            .setSwipeLeftLabelColor(R.color.text_black_900)
             .addSwipeRightLabel("Archive")
+            .setSwipeRightLabelColor(R.color.text_black_900)
             .create()
             .decorate()
 

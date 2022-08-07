@@ -12,6 +12,7 @@
         android:id="@+id/archiveMenu"
         android:title="Archive"
         android:icon="@drawable/ic_archive"
+        android:iconTint="?attr/textBlack300"
         app:showAsAction="ifRoom"/>
 
     <item

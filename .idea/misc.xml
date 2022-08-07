@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/drawable/ic_archive.xml" value="0.1265" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/drawable/ic_copy.xml" value="0.1855" />
+        <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/drawable/ic_delete_forever.xml" value="0.1265" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/drawable/ic_grain.xml" value="0.1855" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/drawable/ic_remove.xml" value="0.1265" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/drawable/ic_security.xml" value="0.1855" />
@@ -15,6 +17,7 @@
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/layout/add_password_dialog.xml" value="0.22447916666666667" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/layout/main_toolbar.xml" value="0.22447916666666667" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/layout/password_item.xml" value="0.33" />
+        <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/menu-v26/main_toolbar_menu.xml" value="0.22447916666666667" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/menu/bottom_nav_menu.xml" value="0.22447916666666667" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/menu/main_toolbar_menu.xml" value="0.22447916666666667" />
       </map>
