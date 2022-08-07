@@ -2,6 +2,8 @@ package com.example.biosec.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
@@ -45,6 +47,25 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+
+        val inflater = menuInflater
+        inflater.inflate(R.menu.main_toolbar_menu, menu)
+
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        when(item.itemId) {
+            R.id.sortMenu -> {
+                toast("Sort option selected")
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
+
     private fun initializeVariables() {
 
         bottomNavBar = findViewById(R.id.bottomNavBar)
@@ -78,8 +99,9 @@ class MainActivity : AppCompatActivity() {
                     ItemTouchHelper.LEFT -> {
 
                         //  Delete the item
-                        val password = adapter.getPasswordAt(viewHolder.adapterPosition)
+                        val password = adapter.getPasswordAt(viewHolder.bindingAdapterPosition)
                         viewModel.deletePass(password)
+                        toast("${password.userName.toString()} deleted")
                     }
 
                     ItemTouchHelper.RIGHT -> {

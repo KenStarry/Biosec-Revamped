@@ -16,24 +16,27 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="16dp"
+        android:layout_marginBottom="50dp"
         android:layout_marginTop="60dp">
 
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:lines="1"
             android:text="@string/title"
             android:textColor="?attr/textBlack900"
             android:textSize="@dimen/text_800"
-            android:textStyle="bold"
-            android:lines="1"/>
+            android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/allPasswordsRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/allPasswordsRecyclerView"
-            tools:listitem="@layout/password_item"
-            android:layout_below="@id/title"/>
+            android:layout_below="@id/title"
+            android:layout_marginTop="16dp"
+            tools:listitem="@layout/password_item" />
 
     </RelativeLayout>
 
@@ -48,6 +51,7 @@
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="72dp"
+        app:rippleColor="?attr/colorOnPrimary"
         app:tint="?attr/colorPrimary"
         app:borderWidth="0dp"/>
 
