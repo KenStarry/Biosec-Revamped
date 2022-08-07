@@ -3,6 +3,7 @@ package com.example.biosec.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -25,6 +26,16 @@ class PasswordsAdapter : ListAdapter<Passwords, PasswordsAdapter.PasswordHolder>
         with(getItem(position)) {
             holder.passTitle.text = userName
             holder.passDesc.text = emailAddress
+
+            if (isCertified == true)
+                holder.passVerifiedIc.visibility = View.VISIBLE
+            else
+                holder.passVerifiedIc.visibility = View.GONE
+
+            if (isLocked == true)
+                holder.passSecurityIc.visibility = View.VISIBLE
+            else
+                holder.passSecurityIc.visibility = View.GONE
         }
     }
 
@@ -34,6 +45,8 @@ class PasswordsAdapter : ListAdapter<Passwords, PasswordsAdapter.PasswordHolder>
 
         val passTitle: TextView = itemView.findViewById(R.id.passTitle)
         val passDesc: TextView = itemView.findViewById(R.id.passDescription)
+        val passVerifiedIc: ImageView = itemView.findViewById(R.id.passVerifiedIc)
+        val passSecurityIc: ImageView = itemView.findViewById(R.id.passSecurityIc)
     }
 }
 

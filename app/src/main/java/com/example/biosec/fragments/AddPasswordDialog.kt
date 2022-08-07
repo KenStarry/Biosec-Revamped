@@ -55,7 +55,10 @@ class AddPasswordDialog : BottomSheetDialogFragment() {
                 viewModel.insertPass(Passwords(
                     userName = userName,
                     emailAddress = email,
-                    password = password
+                    password = password,
+                    isLocked = true,
+                    isCertified = false,
+                    website = "Sololearn"
                 ))
 
                 viewModel.getAllPasswords().observe(requireActivity()) {

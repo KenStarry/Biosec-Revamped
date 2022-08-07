@@ -9,7 +9,7 @@ import com.example.biosec.daos.PasswordsDao
 import com.example.biosec.entities.Passwords
 import com.example.biosec.utils.subscribeOnBackground
 
-@Database(entities = [Passwords::class], version = 1)
+@Database(entities = [Passwords::class], version = 2)
 abstract class PasswordsDatabase : RoomDatabase() {
 
     abstract fun passwordsDao(): PasswordsDao
@@ -47,15 +47,36 @@ abstract class PasswordsDatabase : RoomDatabase() {
 
             subscribeOnBackground {
                 dao.insertPassword(
-                    Passwords(userName = "KenStarry", emailAddress = "starrycodes@gmail.com", password = "12345")
+                    Passwords(
+                        website = "W3Schools",
+                        userName = "KenStarry",
+                        emailAddress = "starrycodes@gmail.com",
+                        password = "12345",
+                        isCertified = false,
+                        isLocked = true
+                    )
                 )
 
                 dao.insertPassword(
-                    Passwords(userName = "Sheilla", emailAddress = "sheillakemboi68@gmail.com", password = "12345")
+                    Passwords(
+                        website = "GeeksForGeeks",
+                        userName = "Pookie",
+                        emailAddress = "starrycodes@gmail.com",
+                        password = "12345",
+                        isCertified = false,
+                        isLocked = false
+                    )
                 )
 
                 dao.insertPassword(
-                    Passwords(userName = "Pookie", emailAddress = "pookie@gmail.com", password = "12345")
+                    Passwords(
+                        website = "Freecodecamp",
+                        userName = "Sheilla",
+                        emailAddress = "sheillakemboi68@gmail.com",
+                        password = "12345",
+                        isCertified = false,
+                        isLocked = true
+                    )
                 )
             }
         }
