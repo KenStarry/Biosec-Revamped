@@ -5,8 +5,13 @@
     <color name="pink">#D90368</color>
     <color name="delete">#FFACA7</color>
     <color name="archive">#C0FFA4</color>
-
     <color name="blue_light">#EDFBFF</color>
+
+    <!--Password Colors-->
+    <color name="certified_pass">#4CC9F0</color>
+    <color name="strong_pass">#00FF00</color>
+    <color name="medium_pass">#FF8400</color>
+    <color name="weak_pass">#FF0000</color>
 
     <!--Dark Mode-->
     <color name="black_light">#2D2E2E</color>

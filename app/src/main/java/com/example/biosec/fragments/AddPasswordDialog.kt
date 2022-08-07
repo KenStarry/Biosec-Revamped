@@ -4,15 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import android.widget.ImageButton
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.biosec.R
 import com.example.biosec.adapters.PasswordsAdapter
 import com.example.biosec.entities.Passwords
+import com.example.biosec.utils.PasswordStrengthCalculator
 import com.example.biosec.viewmodels.PasswordsViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.snackbar.Snackbar
@@ -26,7 +26,13 @@ class AddPasswordDialog : BottomSheetDialogFragment() {
     private lateinit var emailInput: EditText
     private lateinit var passwordInput: EditText
     private lateinit var savePassBtn: TextView
+    private lateinit var passCheckerText: TextView
+    private lateinit var passCheckerIcon: ImageView
     private lateinit var lockBtn: ImageButton
+
+    private var passColor: Int = R.color.weak_pass
+    private var passIcon: Int = R.drawable.ic_weak_pass
+    private val passwordStrengthCalculator = PasswordStrengthCalculator()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,7 +50,25 @@ class AddPasswordDialog : BottomSheetDialogFragment() {
         emailInput = view.findViewById(R.id.emailInput)
         passwordInput = view.findViewById(R.id.passwordInput)
         savePassBtn = view.findViewById(R.id.savePassBtn)
+        passCheckerText = view.findViewById(R.id.passCheckerText)
+        passCheckerIcon = view.findViewById(R.id.passCheckerIcon)
         lockBtn = view.findViewById(R.id.lockBtn)
+
+        passwordInput.addTextChangedListener(passwordStrengthCalculator)
+
+        //  Observers for password calculator
+        passwordStrengthCalculator.strengthLevel.observe(this, Observer {strengthLevel ->
+            displayStrengthLevel(strengthLevel)
+        })
+
+        passwordStrengthCalculator.strengthColor.observe(this, Observer {strengthColor ->
+            passColor = strengthColor
+        })
+
+        passwordStrengthCalculator.strengthIcon.observe(this, Observer {strengthIcon ->
+            passIcon = strengthIcon
+        })
+
 
         var lockedState = false
         lockBtn.setOnClickListener {
@@ -91,6 +115,13 @@ class AddPasswordDialog : BottomSheetDialogFragment() {
         }
 
         return view
+    }
+
+    private fun displayStrengthLevel(strengthLevel: String) {
+
+        passCheckerText.text = strengthLevel
+        passCheckerText.setTextColor(ContextCompat.getColor(requireActivity(), passColor))
+        passCheckerIcon.setImageResource(passIcon)
     }
 
     private fun isEditTextEmpty(): Boolean {
