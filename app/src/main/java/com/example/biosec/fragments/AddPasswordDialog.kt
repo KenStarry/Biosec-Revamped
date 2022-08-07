@@ -20,7 +20,7 @@ class AddPasswordDialog : BottomSheetDialogFragment() {
     private lateinit var viewModel: PasswordsViewModel
     private lateinit var adapter: PasswordsAdapter
 
-    private lateinit var userNameInput: EditText
+    private lateinit var websiteInput: EditText
     private lateinit var emailInput: EditText
     private lateinit var passwordInput: EditText
     private lateinit var savePassBtn: TextView
@@ -37,7 +37,7 @@ class AddPasswordDialog : BottomSheetDialogFragment() {
         viewModel = ViewModelProvider(requireActivity()).get(PasswordsViewModel::class.java)
         adapter = PasswordsAdapter()
 
-        userNameInput = view.findViewById(R.id.userNameInput)
+        websiteInput = view.findViewById(R.id.websiteInput)
         emailInput = view.findViewById(R.id.emailInput)
         passwordInput = view.findViewById(R.id.passwordInput)
         savePassBtn = view.findViewById(R.id.savePassBtn)
@@ -48,17 +48,17 @@ class AddPasswordDialog : BottomSheetDialogFragment() {
             if (!isEditTextEmpty()) {
 
                 //  Add insert items to database
-                val userName = userNameInput.text.toString()
+                val website = websiteInput.text.toString()
                 val email = emailInput.text.toString()
                 val password = passwordInput.text.toString()
 
                 viewModel.insertPass(Passwords(
-                    userName = userName,
+                    userName = "Someone",
                     emailAddress = email,
                     password = password,
                     isLocked = true,
                     isCertified = false,
-                    website = "Sololearn"
+                    website = website
                 ))
 
                 viewModel.getAllPasswords().observe(requireActivity()) {
@@ -75,7 +75,7 @@ class AddPasswordDialog : BottomSheetDialogFragment() {
     }
 
     private fun isEditTextEmpty(): Boolean {
-        return userNameInput.text.toString().trim() == "" &&
+        return websiteInput.text.toString().trim() == "" &&
                 emailInput.text.toString().trim() == "" &&
                 passwordInput.text.toString().trim() == ""
     }

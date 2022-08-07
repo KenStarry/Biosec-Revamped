@@ -24,7 +24,8 @@ class PasswordsAdapter : ListAdapter<Passwords, PasswordsAdapter.PasswordHolder>
 
     override fun onBindViewHolder(holder: PasswordHolder, position: Int) {
         with(getItem(position)) {
-            holder.passTitle.text = userName
+
+            holder.passTitle.text = website
             holder.passDesc.text = emailAddress
 
             if (isCertified == true)
@@ -57,8 +58,11 @@ private val diffCallback = object : DiffUtil.ItemCallback<Passwords>() {
 
     override fun areContentsTheSame(oldItem: Passwords, newItem: Passwords): Boolean {
         return oldItem.id == newItem.id &&
+                oldItem.website == newItem.website &&
                 oldItem.userName == newItem.userName &&
                 oldItem.password == newItem.password &&
-                oldItem.emailAddress == newItem.emailAddress
+                oldItem.emailAddress == newItem.emailAddress &&
+                oldItem.isLocked == newItem.isLocked &&
+                oldItem.isCertified == newItem.isCertified
     }
 }
