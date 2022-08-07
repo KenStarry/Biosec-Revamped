@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
@@ -14,6 +15,7 @@ import com.example.biosec.adapters.PasswordsAdapter
 import com.example.biosec.entities.Passwords
 import com.example.biosec.viewmodels.PasswordsViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.google.android.material.snackbar.Snackbar
 
 class AddPasswordDialog : BottomSheetDialogFragment() {
 
@@ -24,6 +26,7 @@ class AddPasswordDialog : BottomSheetDialogFragment() {
     private lateinit var emailInput: EditText
     private lateinit var passwordInput: EditText
     private lateinit var savePassBtn: TextView
+    private lateinit var lockBtn: ImageButton
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,6 +44,22 @@ class AddPasswordDialog : BottomSheetDialogFragment() {
         emailInput = view.findViewById(R.id.emailInput)
         passwordInput = view.findViewById(R.id.passwordInput)
         savePassBtn = view.findViewById(R.id.savePassBtn)
+        lockBtn = view.findViewById(R.id.lockBtn)
+
+        var lockedState = false
+        lockBtn.setOnClickListener {
+
+            if (!lockedState) {
+                lockBtn.setImageResource(R.drawable.ic__lock)
+                lockedState = true
+                toast("Password locked")
+
+            } else {
+                lockBtn.setImageResource(R.drawable.ic_lock_open)
+                lockedState = false
+                toast("Password unlocked")
+            }
+        }
 
         savePassBtn.setOnClickListener {
 
@@ -56,7 +75,7 @@ class AddPasswordDialog : BottomSheetDialogFragment() {
                     userName = "Someone",
                     emailAddress = email,
                     password = password,
-                    isLocked = true,
+                    isLocked = lockedState,
                     isCertified = false,
                     website = website
                 ))

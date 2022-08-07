@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/drawable/ic__lock.xml" value="0.1855" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/drawable/ic_archive.xml" value="0.1265" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/drawable/ic_copy.xml" value="0.1855" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/drawable/ic_delete_forever.xml" value="0.1265" />
@@ -13,6 +14,7 @@
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/drawable/ic_sort.xml" value="0.1855" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/drawable/ic_verified.xml" value="0.1855" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/drawable/round_btn.xml" value="0.1265" />
+        <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/drawable/rounded_button.xml" value="0.1265" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/drawable/rounded_dialog.xml" value="0.1265" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/drawable/rounded_edittext.xml" value="0.1265" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/layout/activity_main.xml" value="0.25" />
