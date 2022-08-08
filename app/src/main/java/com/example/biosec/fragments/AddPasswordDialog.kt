@@ -14,6 +14,7 @@ import com.example.biosec.adapters.PasswordsAdapter
 import com.example.biosec.entities.Passwords
 import com.example.biosec.utils.PasswordStrengthCalculator
 import com.example.biosec.viewmodels.PasswordsViewModel
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.snackbar.Snackbar
 
@@ -43,6 +44,23 @@ class AddPasswordDialog : BottomSheetDialogFragment() {
         val view = inflater.inflate(R.layout.add_password_dialog, container, false)
         setStyle(DialogFragment.STYLE_NORMAL, R.style.MyBottomSheetDialogTheme)
 
+
+        return view
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        val bottomSheetBehaviour = BottomSheetBehavior.from(requireView().parent as View)
+        bottomSheetBehaviour.state = BottomSheetBehavior.STATE_EXPANDED
+
+        initializeVariables(requireView().parent as View)
+        setupListeners()
+
+    }
+
+    private fun initializeVariables(view: View) {
+
         viewModel = ViewModelProvider(requireActivity()).get(PasswordsViewModel::class.java)
         adapter = PasswordsAdapter()
 
@@ -53,6 +71,10 @@ class AddPasswordDialog : BottomSheetDialogFragment() {
         passCheckerText = view.findViewById(R.id.passCheckerText)
         passCheckerIcon = view.findViewById(R.id.passCheckerIcon)
         lockBtn = view.findViewById(R.id.lockBtn)
+
+    }
+
+    private fun setupListeners() {
 
         passwordInput.addTextChangedListener(passwordStrengthCalculator)
 
@@ -85,10 +107,12 @@ class AddPasswordDialog : BottomSheetDialogFragment() {
             }
         }
 
+        //  Disable save button
+        savePassBtn.isEnabled = isEditTextEmpty()
         savePassBtn.setOnClickListener {
 
             //  Check if all the edittexts are filled out
-            if (!isEditTextEmpty()) {
+            if (savePassBtn.isEnabled) {
 
                 //  Add insert items to database
                 val website = websiteInput.text.toString()
@@ -108,13 +132,14 @@ class AddPasswordDialog : BottomSheetDialogFragment() {
                     adapter.submitList(it)
                 }
 
+                val bottomSheetBehaviour = BottomSheetBehavior.from(requireView().parent as View)
+                bottomSheetBehaviour.state = BottomSheetBehavior.STATE_HIDDEN
 
+                toast("Entry Added")
             } else {
                 toast("Fields cannot be empty")
             }
         }
-
-        return view
     }
 
     private fun displayStrengthLevel(strengthLevel: String) {
