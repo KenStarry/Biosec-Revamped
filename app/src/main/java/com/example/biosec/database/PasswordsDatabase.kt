@@ -5,11 +5,12 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
+import com.example.biosec.R
 import com.example.biosec.daos.PasswordsDao
 import com.example.biosec.entities.Passwords
 import com.example.biosec.utils.subscribeOnBackground
 
-@Database(entities = [Passwords::class], version = 2)
+@Database(entities = [Passwords::class], version = 3)
 abstract class PasswordsDatabase : RoomDatabase() {
 
     abstract fun passwordsDao(): PasswordsDao
@@ -52,8 +53,10 @@ abstract class PasswordsDatabase : RoomDatabase() {
                         userName = "KenStarry",
                         emailAddress = "starrycodes@gmail.com",
                         password = "12345",
-                        isCertified = false,
-                        isLocked = true
+                        passStrengthIcon = R.drawable.ic_weak_pass,
+                        isLocked = true,
+                        passIcon = R.drawable.ic_circle,
+                        passColor = R.color.blue_light
                     )
                 )
 
@@ -63,8 +66,10 @@ abstract class PasswordsDatabase : RoomDatabase() {
                         userName = "Pookie",
                         emailAddress = "starrycodes@gmail.com",
                         password = "12345",
-                        isCertified = false,
-                        isLocked = false
+                        passStrengthIcon = R.drawable.ic_weak_pass,
+                        isLocked = false,
+                        passIcon = R.drawable.ic_circle,
+                        passColor = R.color.blue
                     )
                 )
 
@@ -74,8 +79,10 @@ abstract class PasswordsDatabase : RoomDatabase() {
                         userName = "Sheilla",
                         emailAddress = "sheillakemboi68@gmail.com",
                         password = "12345",
-                        isCertified = false,
-                        isLocked = true
+                        passStrengthIcon = R.drawable.ic_strong_pass,
+                        isLocked = true,
+                        passIcon = R.drawable.ic_circle,
+                        passColor = R.color.blue_light
                     )
                 )
             }

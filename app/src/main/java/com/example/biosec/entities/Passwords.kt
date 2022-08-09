@@ -11,8 +11,10 @@ class Passwords(
     @ColumnInfo(name = "user_name") val userName: String?,
     @ColumnInfo(name = "email_address") val emailAddress: String?,
     @ColumnInfo(name = "password") val password: String?,
-    @ColumnInfo(name = "certified") val isCertified: Boolean?,
-    @ColumnInfo(name = "locked") val isLocked: Boolean?
+    @ColumnInfo(name = "password_strength_ic") val passStrengthIcon: Int?,
+    @ColumnInfo(name = "locked") val isLocked: Boolean?,
+    @ColumnInfo(name = "pass_icon") val passIcon: Int?,
+    @ColumnInfo(name = "pass_color") val passColor: Int?
 ) {
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0

@@ -62,7 +62,7 @@ class AddPasswordDialog : BottomSheetDialogFragment() {
     private fun initializeVariables(view: View) {
 
         viewModel = ViewModelProvider(requireActivity()).get(PasswordsViewModel::class.java)
-        adapter = PasswordsAdapter()
+        adapter = PasswordsAdapter(requireContext())
 
         websiteInput = view.findViewById(R.id.websiteInput)
         emailInput = view.findViewById(R.id.emailInput)
@@ -124,8 +124,10 @@ class AddPasswordDialog : BottomSheetDialogFragment() {
                     emailAddress = email,
                     password = password,
                     isLocked = lockedState,
-                    isCertified = false,
-                    website = website
+                    passStrengthIcon = passIcon,
+                    website = website,
+                    passIcon = R.drawable.ic_dashboard,
+                    passColor = R.color.medium_pass
                 ))
 
                 viewModel.getAllPasswords().observe(requireActivity()) {
