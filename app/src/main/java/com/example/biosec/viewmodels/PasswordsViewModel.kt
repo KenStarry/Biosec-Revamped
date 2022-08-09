@@ -10,6 +10,7 @@ class PasswordsViewModel(application: Application) : AndroidViewModel(applicatio
 
     private val repository = PasswordsRepo(application)
     private val allPasswords = repository.getAllPasswords()
+    private val alphabeticalPasswords = repository.getAlphabeticalPasswords()
 
     fun insertPass(pass: Passwords) {
         repository.insertPassword(pass)
@@ -27,6 +28,9 @@ class PasswordsViewModel(application: Application) : AndroidViewModel(applicatio
         return allPasswords
     }
 
+    fun getAlphabeticalPasswords(): LiveData<List<Passwords>> {
+        return alphabeticalPasswords
+    }
 }
 
 

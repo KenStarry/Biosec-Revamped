@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.biosec.R
 import com.example.biosec.adapters.PasswordsAdapter
+import com.example.biosec.adapters.PasswordsAlphabeticalAdapter
 import com.example.biosec.fragments.AddPasswordDialog
 import com.example.biosec.utils.SwipeGesture
 import com.example.biosec.viewmodels.PasswordsViewModel
@@ -43,6 +44,7 @@ class MainActivity : AppCompatActivity() {
 
         viewModel = ViewModelProvider(this).get(PasswordsViewModel::class.java)
         viewModel.getAllPasswords().observe(this) {
+
             adapter.submitList(it)
 
             //  if the list is empty, show the lottie animation
@@ -67,7 +69,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
-        when(item.itemId) {
+        when (item.itemId) {
             R.id.sortMenu -> {
                 toast("Sort option selected")
             }
@@ -86,6 +88,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initializeVariables() {
 
+        adapter = PasswordsAdapter(this)
         bottomNavBar = findViewById(R.id.bottomNavBar)
         coordinatorLayout = findViewById(R.id.mainCoordinatorLayout)
         recyclerView = findViewById(R.id.allPasswordsRecyclerView)

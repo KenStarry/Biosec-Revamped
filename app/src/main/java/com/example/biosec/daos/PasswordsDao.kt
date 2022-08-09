@@ -16,9 +16,11 @@ interface PasswordsDao {
     @Delete
     fun deletePassword(pass: Passwords)
 
-    @Query("SELECT * FROM passwords")
+    @Query("SELECT * FROM passwords ORDER BY website")
     fun getAllPasswords(): LiveData<List<Passwords>>
 
+    @Query("SELECT * FROM passwords WHERE website LIKE 'A%'")
+    fun getAlphabeticalPass(): LiveData<List<Passwords>>
 }
 
 

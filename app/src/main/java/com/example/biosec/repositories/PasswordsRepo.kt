@@ -11,11 +11,13 @@ class PasswordsRepo(application: Application) {
 
     private var dao: PasswordsDao
     private var allPasswords: LiveData<List<Passwords>>
+    private var alphabeticalPasswords: LiveData<List<Passwords>>
     private val db = PasswordsDatabase.getInstance(application)
 
     init {
         dao = db.passwordsDao()
         allPasswords = dao.getAllPasswords()
+        alphabeticalPasswords = dao.getAlphabeticalPass()
     }
 
     fun insertPassword(pass: Passwords) {
@@ -38,6 +40,10 @@ class PasswordsRepo(application: Application) {
 
     fun getAllPasswords(): LiveData<List<Passwords>> {
         return allPasswords
+    }
+
+    fun getAlphabeticalPasswords(): LiveData<List<Passwords>> {
+        return alphabeticalPasswords
     }
 
 }
