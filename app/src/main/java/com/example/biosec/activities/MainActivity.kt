@@ -9,14 +9,12 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.coordinatorlayout.widget.CoordinatorLayout
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.biosec.R
 import com.example.biosec.adapters.PasswordsAdapter
-import com.example.biosec.adapters.PasswordsAlphabeticalAdapter
 import com.example.biosec.fragments.AddPasswordDialog
 import com.example.biosec.utils.SwipeGesture
 import com.example.biosec.viewmodels.PasswordsViewModel

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.SectionIndexer
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
@@ -12,16 +13,22 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.biosec.R
 import com.example.biosec.entities.Passwords
+import java.util.*
 
-class PasswordsAdapter(val context: Context) : ListAdapter<Passwords, PasswordsAdapter.PasswordHolder>(diffCallback) {
+class PasswordsAdapter(val context: Context) :
+    ListAdapter<Passwords, PasswordsAdapter.PasswordHolder>(diffCallback) {
+
+    private lateinit var mSectionPositions: ArrayList<Int>
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PasswordHolder {
 
-        return PasswordHolder(LayoutInflater.from(parent.context).inflate(
-            R.layout.password_item,
-            parent,
-            false
-        ))
+        return PasswordHolder(
+            LayoutInflater.from(parent.context).inflate(
+                R.layout.password_item,
+                parent,
+                false
+            )
+        )
     }
 
     override fun onBindViewHolder(holder: PasswordHolder, position: Int) {
@@ -31,7 +38,8 @@ class PasswordsAdapter(val context: Context) : ListAdapter<Passwords, PasswordsA
             holder.passDesc.text = emailAddress
             holder.passVerifiedIc.setImageResource(passStrengthIcon!!)
             holder.passIconRecycler.setImageResource(passIcon!!)
-            holder.passIconRecycler.imageTintList = ContextCompat.getColorStateList(context, passColor!!)
+            holder.passIconRecycler.imageTintList =
+                ContextCompat.getColorStateList(context, passColor!!)
 
             if (isLocked == true)
                 holder.passSecurityIc.visibility = View.VISIBLE

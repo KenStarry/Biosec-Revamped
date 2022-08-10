@@ -40,8 +40,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="16dp"
-                android:visibility="gone"
-                tools:listitem="@layout/password_item" />
+                android:visibility="visible"
+                tools:listitem="@layout/password_item"
+                android:scrollbars="vertical"
+                android:overScrollMode="ifContentScrolls"
+                android:scrollbarStyle="insideInset"
+                android:scrollbarTrackVertical="?attr/colorOnPrimary"
+                android:scrollbarFadeDuration="@integer/material_motion_duration_short_1"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
