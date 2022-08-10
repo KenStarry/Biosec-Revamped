@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
@@ -17,13 +18,12 @@ import com.example.biosec.viewmodels.PasswordsViewModel
 import java.util.ArrayList
 
 class PasswordsAlphabeticalAdapter(
-    context: Context,
-    private val alphabetList: List<Char>,
-    private val passwords: List<Passwords>
+    val context: Context,
+    private val alphabetList: Array<Char>,
+    private val parentAdapter: PasswordsAdapter,
+    private val passwordsList: List<Passwords>
 
 ) : RecyclerView.Adapter<PasswordsAlphabeticalAdapter.PassViewHolder>() {
-
-    private val parentAdapter = PasswordsAdapter(context)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PassViewHolder {
 
@@ -38,17 +38,7 @@ class PasswordsAlphabeticalAdapter(
 
         holder.alphabetTitle.text = alphabetList.get(position).toString()
 
-        val mutableList = mutableListOf<Passwords>()
-
-        passwords.forEach { pass ->
-
-            if (pass.website!!.toString().get(0) == alphabetList.get(position)) {
-
-                mutableList.add(pass)
-            }
-            parentAdapter.submitList(mutableList)
-        }
-
+        parentAdapter.submitList(passwordsList)
         holder.childRecyclerView.adapter = parentAdapter
         holder.childRecyclerView.layoutManager = LinearLayoutManager(
             holder.childRecyclerView.context,
@@ -56,6 +46,7 @@ class PasswordsAlphabeticalAdapter(
             false
         )
 
+        Toast.makeText(context, passwordsList.size.toString(), Toast.LENGTH_SHORT).show()
 
     }
 

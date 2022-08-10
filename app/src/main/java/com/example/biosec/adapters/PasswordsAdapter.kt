@@ -18,8 +18,6 @@ import java.util.*
 class PasswordsAdapter(val context: Context) :
     ListAdapter<Passwords, PasswordsAdapter.PasswordHolder>(diffCallback) {
 
-    private lateinit var mSectionPositions: ArrayList<Int>
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PasswordHolder {
 
         return PasswordHolder(

@@ -6,6 +6,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -15,6 +16,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.biosec.R
 import com.example.biosec.adapters.PasswordsAdapter
+import com.example.biosec.adapters.PasswordsAlphabeticalAdapter
+import com.example.biosec.entities.Passwords
 import com.example.biosec.fragments.AddPasswordDialog
 import com.example.biosec.utils.SwipeGesture
 import com.example.biosec.viewmodels.PasswordsViewModel
@@ -24,10 +27,15 @@ import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
 
+    private val alphabets = arrayOf('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
+    'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V',
+    'W', 'X', 'Y', 'Z')
+
     private lateinit var viewModel: PasswordsViewModel
     private lateinit var adapter: PasswordsAdapter
     private lateinit var recyclerView: RecyclerView
     private lateinit var toolbar: Toolbar
+    private lateinit var totalPasswordsCount: TextView
     private lateinit var mainFab: FloatingActionButton
     private lateinit var coordinatorLayout: CoordinatorLayout
     private lateinit var bottomNavBar: BottomNavigationView
@@ -38,12 +46,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         initializeVariables()
-        setupRecyclerView()
 
         viewModel = ViewModelProvider(this).get(PasswordsViewModel::class.java)
         viewModel.getAllPasswords().observe(this) {
 
             adapter.submitList(it)
+            totalPasswordsCount.text = it.size.toString()
 
             //  if the list is empty, show the lottie animation
             if (it.isEmpty()) {
@@ -54,6 +62,8 @@ class MainActivity : AppCompatActivity() {
                 recyclerView.visibility = View.VISIBLE
             }
         }
+
+        setupRecyclerView()
 
     }
 
@@ -88,6 +98,7 @@ class MainActivity : AppCompatActivity() {
 
         adapter = PasswordsAdapter(this)
         bottomNavBar = findViewById(R.id.bottomNavBar)
+        totalPasswordsCount = findViewById(R.id.totalPasswordsCount)
         coordinatorLayout = findViewById(R.id.mainCoordinatorLayout)
         recyclerView = findViewById(R.id.allPasswordsRecyclerView)
         emptyTaskLottie = findViewById(R.id.emptyLottieHolder)
@@ -136,8 +147,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerView() {
-        adapter = PasswordsAdapter(this)
-
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
     }
