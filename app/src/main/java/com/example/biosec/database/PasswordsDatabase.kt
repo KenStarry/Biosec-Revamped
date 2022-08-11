@@ -6,14 +6,17 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.biosec.R
+import com.example.biosec.daos.ArchivesDao
 import com.example.biosec.daos.PasswordsDao
+import com.example.biosec.entities.Archives
 import com.example.biosec.entities.Passwords
 import com.example.biosec.utils.subscribeOnBackground
 
-@Database(entities = [Passwords::class], version = 3)
+@Database(entities = [Passwords::class, Archives::class], version = 4)
 abstract class PasswordsDatabase : RoomDatabase() {
 
     abstract fun passwordsDao(): PasswordsDao
+    abstract fun archivesDao(): ArchivesDao
 
     companion object {
 
@@ -43,8 +46,10 @@ abstract class PasswordsDatabase : RoomDatabase() {
             }
         }
 
+        //  Populate the database onCreate
         private fun populateDatabase(db: PasswordsDatabase) {
             val dao = db.passwordsDao()
+            val archivesDao = db.archivesDao()
 
             subscribeOnBackground {
                 dao.insertPassword(
@@ -75,6 +80,19 @@ abstract class PasswordsDatabase : RoomDatabase() {
 
                 dao.insertPassword(
                     Passwords(
+                        website = "Freecodecamp",
+                        userName = "Sheilla",
+                        emailAddress = "sheillakemboi68@gmail.com",
+                        password = "12345",
+                        passStrengthIcon = R.drawable.ic_strong_pass,
+                        isLocked = true,
+                        passIcon = R.drawable.ic_circle,
+                        passColor = R.color.blue_light
+                    )
+                )
+
+                archivesDao.insert(
+                    Archives(
                         website = "Freecodecamp",
                         userName = "Sheilla",
                         emailAddress = "sheillakemboi68@gmail.com",

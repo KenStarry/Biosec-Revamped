@@ -1,4 +1,4 @@
-package com.example.biosec.fragments
+package com.example.biosec.fragments.Dialogs
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -16,7 +16,6 @@ import com.example.biosec.utils.PasswordStrengthCalculator
 import com.example.biosec.viewmodels.PasswordsViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.google.android.material.snackbar.Snackbar
 
 class AddPasswordDialog : BottomSheetDialogFragment() {
 

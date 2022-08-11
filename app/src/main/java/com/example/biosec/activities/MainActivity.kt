@@ -16,9 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.biosec.R
 import com.example.biosec.adapters.PasswordsAdapter
-import com.example.biosec.adapters.PasswordsAlphabeticalAdapter
-import com.example.biosec.entities.Passwords
-import com.example.biosec.fragments.AddPasswordDialog
+import com.example.biosec.fragments.Dialogs.AddPasswordDialog
 import com.example.biosec.utils.SwipeGesture
 import com.example.biosec.viewmodels.PasswordsViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
