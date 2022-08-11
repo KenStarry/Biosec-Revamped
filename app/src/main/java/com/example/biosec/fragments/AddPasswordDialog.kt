@@ -107,12 +107,10 @@ class AddPasswordDialog : BottomSheetDialogFragment() {
             }
         }
 
-        //  Disable save button
-        savePassBtn.isEnabled = isEditTextEmpty()
         savePassBtn.setOnClickListener {
 
             //  Check if all the edittexts are filled out
-            if (savePassBtn.isEnabled) {
+            if (!isEditTextEmpty()) {
 
                 //  Add insert items to database
                 val website = websiteInput.text.toString()
@@ -138,6 +136,7 @@ class AddPasswordDialog : BottomSheetDialogFragment() {
                 bottomSheetBehaviour.state = BottomSheetBehavior.STATE_HIDDEN
 
                 toast("Entry Added")
+
             } else {
                 toast("Fields cannot be empty")
             }
