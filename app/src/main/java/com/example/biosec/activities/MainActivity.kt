@@ -11,13 +11,18 @@ import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.get
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.biosec.R
+import com.example.biosec.adapters.ArchivesAdapter
 import com.example.biosec.adapters.PasswordsAdapter
+import com.example.biosec.entities.Archives
 import com.example.biosec.fragments.Dialogs.AddPasswordDialog
+import com.example.biosec.fragments.Dialogs.ArchivesDialog
 import com.example.biosec.utils.SwipeGesture
+import com.example.biosec.viewmodels.ArchivesViewModel
 import com.example.biosec.viewmodels.PasswordsViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -30,7 +35,9 @@ class MainActivity : AppCompatActivity() {
     'W', 'X', 'Y', 'Z')
 
     private lateinit var viewModel: PasswordsViewModel
+    private lateinit var archivesViewModel: ArchivesViewModel
     private lateinit var adapter: PasswordsAdapter
+    private lateinit var archivesAdapter: ArchivesAdapter
     private lateinit var recyclerView: RecyclerView
     private lateinit var toolbar: Toolbar
     private lateinit var totalPasswordsCount: TextView
@@ -46,6 +53,8 @@ class MainActivity : AppCompatActivity() {
         initializeVariables()
 
         viewModel = ViewModelProvider(this).get(PasswordsViewModel::class.java)
+        archivesViewModel = ViewModelProvider(this).get(ArchivesViewModel::class.java)
+
         viewModel.getAllPasswords().observe(this) {
 
             adapter.submitList(it)
@@ -81,7 +90,13 @@ class MainActivity : AppCompatActivity() {
             }
 
             R.id.archiveMenu -> {
-                toast("Archive option selected")
+
+                archivesViewModel.getAllArchives().observe(this) { archives ->
+                    archivesAdapter.submitList(archives)
+                }
+
+                val archivesDialog = ArchivesDialog(archivesAdapter)
+                archivesDialog.show(supportFragmentManager, "ArchivesDialog")
             }
 
             R.id.hideDetailsMenu -> {
@@ -95,6 +110,7 @@ class MainActivity : AppCompatActivity() {
     private fun initializeVariables() {
 
         adapter = PasswordsAdapter(this)
+        archivesAdapter = ArchivesAdapter(this)
         bottomNavBar = findViewById(R.id.bottomNavBar)
         totalPasswordsCount = findViewById(R.id.totalPasswordsCount)
         coordinatorLayout = findViewById(R.id.mainCoordinatorLayout)
@@ -130,11 +146,27 @@ class MainActivity : AppCompatActivity() {
                         //  Delete the item
                         val password = adapter.getPasswordAt(viewHolder.bindingAdapterPosition)
                         viewModel.deletePass(password)
-                        toast("${password.userName.toString()} deleted")
+                        toast("${password.website.toString()} deleted")
                     }
 
                     ItemTouchHelper.RIGHT -> {
-                        //  Do something
+
+                        //  Get the password that has been swiped
+                        val passwordItem = adapter.getPasswordAt(viewHolder.bindingAdapterPosition)
+
+                        //  copy contents of this file and insert to the archive
+                        archivesViewModel.insertArchive(Archives(
+                            website = passwordItem.website,
+                            userName = passwordItem.userName,
+                            emailAddress = passwordItem.emailAddress,
+                            password = passwordItem.password,
+                            passStrengthIcon = passwordItem.passStrengthIcon,
+                            isLocked = passwordItem.isLocked,
+                            passIcon = passwordItem.passIcon,
+                            passColor = passwordItem.passColor
+                        ))
+                        viewModel.deletePass(passwordItem)
+                        toast("${passwordItem.website.toString()} archived successfully")
                     }
                 }
             }

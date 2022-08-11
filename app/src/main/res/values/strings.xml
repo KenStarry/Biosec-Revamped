@@ -2,4 +2,5 @@
     <string name="app_name">Biosec</string>
     <string name="title">Passwords</string>
     <string name="add_password_title">Quick Add</string>
+    <string name="archived_title">Archived</string>
 </resources>
