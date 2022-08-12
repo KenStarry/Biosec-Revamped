@@ -1,5 +1,8 @@
 package com.example.biosec.fragments.Dialogs
 
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,18 +12,25 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.biosec.R
+import com.example.biosec.adapters.ColorPickerAdapter
 import com.example.biosec.adapters.PasswordsAdapter
 import com.example.biosec.entities.Passwords
 import com.example.biosec.utils.PasswordStrengthCalculator
 import com.example.biosec.viewmodels.PasswordsViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import kotlinx.android.synthetic.main.add_password_dialog.*
+import kotlinx.android.synthetic.main.color_picker_dialog.*
 
-class AddPasswordDialog : BottomSheetDialogFragment() {
+class AddPasswordDialog : BottomSheetDialogFragment(), ColorPickerAdapter.OnItemClickListener {
 
     private lateinit var viewModel: PasswordsViewModel
     private lateinit var adapter: PasswordsAdapter
+
+    @get:JvmName("MyDialog")
+    private lateinit var dialog: Dialog
 
     private lateinit var websiteInput: EditText
     private lateinit var emailInput: EditText
@@ -29,6 +39,8 @@ class AddPasswordDialog : BottomSheetDialogFragment() {
     private lateinit var passCheckerText: TextView
     private lateinit var passCheckerIcon: ImageView
     private lateinit var lockBtn: ImageButton
+
+    private var userColor = R.color.medium_pass
 
     private var passColor: Int = R.color.weak_pass
     private var passIcon: Int = R.drawable.ic_weak_pass
@@ -62,6 +74,7 @@ class AddPasswordDialog : BottomSheetDialogFragment() {
 
         viewModel = ViewModelProvider(requireActivity()).get(PasswordsViewModel::class.java)
         adapter = PasswordsAdapter(requireContext())
+        dialog = Dialog(requireActivity())
 
         websiteInput = view.findViewById(R.id.websiteInput)
         emailInput = view.findViewById(R.id.emailInput)
@@ -71,6 +84,7 @@ class AddPasswordDialog : BottomSheetDialogFragment() {
         passCheckerIcon = view.findViewById(R.id.passCheckerIcon)
         lockBtn = view.findViewById(R.id.lockBtn)
 
+
     }
 
     private fun setupListeners() {
@@ -78,15 +92,15 @@ class AddPasswordDialog : BottomSheetDialogFragment() {
         passwordInput.addTextChangedListener(passwordStrengthCalculator)
 
         //  Observers for password calculator
-        passwordStrengthCalculator.strengthLevel.observe(this, Observer {strengthLevel ->
+        passwordStrengthCalculator.strengthLevel.observe(this, Observer { strengthLevel ->
             displayStrengthLevel(strengthLevel)
         })
 
-        passwordStrengthCalculator.strengthColor.observe(this, Observer {strengthColor ->
+        passwordStrengthCalculator.strengthColor.observe(this, Observer { strengthColor ->
             passColor = strengthColor
         })
 
-        passwordStrengthCalculator.strengthIcon.observe(this, Observer {strengthIcon ->
+        passwordStrengthCalculator.strengthIcon.observe(this, Observer { strengthIcon ->
             passIcon = strengthIcon
         })
 
@@ -106,6 +120,11 @@ class AddPasswordDialog : BottomSheetDialogFragment() {
             }
         }
 
+        //  Display color picker
+        pickedColor.setOnClickListener {
+            displayColorDialog()
+        }
+
         savePassBtn.setOnClickListener {
 
             //  Check if all the edittexts are filled out
@@ -116,16 +135,18 @@ class AddPasswordDialog : BottomSheetDialogFragment() {
                 val email = emailInput.text.toString()
                 val password = passwordInput.text.toString()
 
-                viewModel.insertPass(Passwords(
-                    userName = "Someone",
-                    emailAddress = email,
-                    password = password,
-                    isLocked = lockedState,
-                    passStrengthIcon = passIcon,
-                    website = website,
-                    passIcon = R.drawable.ic_dashboard,
-                    passColor = R.color.medium_pass
-                ))
+                viewModel.insertPass(
+                    Passwords(
+                        userName = "Someone",
+                        emailAddress = email,
+                        password = password,
+                        isLocked = lockedState,
+                        passStrengthIcon = passIcon,
+                        website = website,
+                        passIcon = R.drawable.ic_dashboard,
+                        passColor = userColor
+                    )
+                )
 
                 viewModel.getAllPasswords().observe(requireActivity()) {
                     adapter.submitList(it)
@@ -140,6 +161,28 @@ class AddPasswordDialog : BottomSheetDialogFragment() {
                 toast("Fields cannot be empty")
             }
         }
+    }
+
+    //  Color Picker Dialog
+    private fun displayColorDialog() {
+
+        dialog.setContentView(R.layout.color_picker_dialog)
+        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+        val colRecyclerView = dialog.pickColorRecyclerView
+        val adapter = ColorPickerAdapter(requireActivity(), this)
+
+        colRecyclerView.adapter = adapter
+        colRecyclerView.layoutManager =
+            GridLayoutManager(
+                requireActivity(),
+                4,
+                GridLayoutManager.VERTICAL,
+                false
+            )
+
+        dialog.show()
+
     }
 
     private fun displayStrengthLevel(strengthLevel: String) {
@@ -157,6 +200,13 @@ class AddPasswordDialog : BottomSheetDialogFragment() {
 
     private fun toast(message: String) {
         Toast.makeText(requireActivity(), message, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onItemClick(userCol: Int) {
+
+        userColor = userCol
+        pickedColor.setCardBackgroundColor(ContextCompat.getColor(requireActivity(), userCol))
+        dialog.dismiss()
     }
 }
 
