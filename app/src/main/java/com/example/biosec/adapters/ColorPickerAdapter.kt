@@ -16,9 +16,6 @@ class ColorPickerAdapter(
 
 ) : RecyclerView.Adapter<ColorPickerAdapter.ColorViewHolder>() {
 
-    //  Live Data
-    var selected_col: MutableLiveData<Int> = MutableLiveData()
-
     val colorsArray = intArrayOf(
         R.color.weak_pass, R.color.medium_pass,
         R.color.strong_pass, R.color.blue,

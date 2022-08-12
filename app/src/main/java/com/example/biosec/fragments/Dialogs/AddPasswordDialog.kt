@@ -15,16 +15,21 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.biosec.R
 import com.example.biosec.adapters.ColorPickerAdapter
+import com.example.biosec.adapters.IconPickerAdapter
 import com.example.biosec.adapters.PasswordsAdapter
 import com.example.biosec.entities.Passwords
+import com.example.biosec.interfaces.IconClickedInterface
 import com.example.biosec.utils.PasswordStrengthCalculator
 import com.example.biosec.viewmodels.PasswordsViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.add_password_dialog.*
 import kotlinx.android.synthetic.main.color_picker_dialog.*
+import kotlinx.android.synthetic.main.icon_picker_dialog.*
 
-class AddPasswordDialog : BottomSheetDialogFragment(), ColorPickerAdapter.OnItemClickListener {
+class AddPasswordDialog : BottomSheetDialogFragment(),
+    ColorPickerAdapter.OnItemClickListener,
+    IconClickedInterface {
 
     private lateinit var viewModel: PasswordsViewModel
     private lateinit var adapter: PasswordsAdapter
@@ -41,6 +46,7 @@ class AddPasswordDialog : BottomSheetDialogFragment(), ColorPickerAdapter.OnItem
     private lateinit var lockBtn: ImageButton
 
     private var userColor = R.color.medium_pass
+    private var userIc = R.drawable.ic_dashboard
 
     private var passColor: Int = R.color.weak_pass
     private var passIcon: Int = R.drawable.ic_weak_pass
@@ -125,6 +131,11 @@ class AddPasswordDialog : BottomSheetDialogFragment(), ColorPickerAdapter.OnItem
             displayColorDialog()
         }
 
+        //  Display Icon Picker
+        pickedIcon.setOnClickListener {
+            displayIconDialog()
+        }
+
         savePassBtn.setOnClickListener {
 
             //  Check if all the edittexts are filled out
@@ -143,7 +154,7 @@ class AddPasswordDialog : BottomSheetDialogFragment(), ColorPickerAdapter.OnItem
                         isLocked = lockedState,
                         passStrengthIcon = passIcon,
                         website = website,
-                        passIcon = R.drawable.ic_dashboard,
+                        passIcon = userIc,
                         passColor = userColor
                     )
                 )
@@ -161,6 +172,21 @@ class AddPasswordDialog : BottomSheetDialogFragment(), ColorPickerAdapter.OnItem
                 toast("Fields cannot be empty")
             }
         }
+    }
+
+    private fun displayIconDialog() {
+
+        dialog.setContentView(R.layout.icon_picker_dialog)
+        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+        val recyclerView = dialog.pickIconRecyclerView
+        val adapter = IconPickerAdapter(requireActivity(), this)
+
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager =
+            GridLayoutManager(requireActivity(), 4, GridLayoutManager.VERTICAL, false)
+
+        dialog.show()
     }
 
     //  Color Picker Dialog
@@ -206,6 +232,13 @@ class AddPasswordDialog : BottomSheetDialogFragment(), ColorPickerAdapter.OnItem
 
         userColor = userCol
         pickedColor.setCardBackgroundColor(ContextCompat.getColor(requireActivity(), userCol))
+        dialog.dismiss()
+    }
+
+    override fun onIconClicked(userIcon: Int) {
+
+        userIc = userIcon
+        pickedIcon.setImageResource(userIcon)
         dialog.dismiss()
     }
 }
