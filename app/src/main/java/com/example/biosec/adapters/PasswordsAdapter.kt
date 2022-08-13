@@ -13,9 +13,15 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.biosec.R
 import com.example.biosec.entities.Passwords
+import com.example.biosec.interfaces.PasswordClickedInterface
+import kotlinx.android.synthetic.main.password_item.view.*
 import java.util.*
 
-class PasswordsAdapter(val context: Context) :
+class PasswordsAdapter(
+    val context: Context,
+    private val listener: PasswordClickedInterface
+
+) :
     ListAdapter<Passwords, PasswordsAdapter.PasswordHolder>(diffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PasswordHolder {
@@ -48,13 +54,20 @@ class PasswordsAdapter(val context: Context) :
 
     fun getPasswordAt(position: Int) = getItem(position)
 
-    class PasswordHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class PasswordHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        val passTitle: TextView = itemView.findViewById(R.id.passTitle)
-        val passDesc: TextView = itemView.findViewById(R.id.passDescription)
-        val passVerifiedIc: ImageView = itemView.findViewById(R.id.passVerifiedIc)
-        val passSecurityIc: ImageView = itemView.findViewById(R.id.passSecurityIc)
-        val passIconRecycler: ImageView = itemView.findViewById(R.id.passIconRecycler)
+        val passTitle: TextView = itemView.passTitle
+        val passDesc: TextView = itemView.passDescription
+        val passVerifiedIc: ImageView = itemView.passVerifiedIc
+        val passSecurityIc: ImageView = itemView.passSecurityIc
+        val passIconRecycler: ImageView = itemView.passIconRecycler
+
+        //  Set onClick listener for the passwords
+        init {
+            itemView.setOnClickListener {
+                listener.onPasswordClicked(getPasswordAt(bindingAdapterPosition))
+            }
+        }
     }
 }
 

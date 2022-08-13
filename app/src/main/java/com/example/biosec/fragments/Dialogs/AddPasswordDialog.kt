@@ -20,6 +20,7 @@ import com.example.biosec.adapters.PasswordsAdapter
 import com.example.biosec.entities.Passwords
 import com.example.biosec.interfaces.IconClickedInterface
 import com.example.biosec.interfaces.OnItemClickListener
+import com.example.biosec.interfaces.PasswordClickedInterface
 import com.example.biosec.utils.PasswordStrengthCalculator
 import com.example.biosec.viewmodels.PasswordsViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -30,7 +31,8 @@ import kotlinx.android.synthetic.main.icon_picker_dialog.*
 
 class AddPasswordDialog : BottomSheetDialogFragment(),
     OnItemClickListener,
-    IconClickedInterface {
+    IconClickedInterface,
+PasswordClickedInterface{
 
     private lateinit var viewModel: PasswordsViewModel
     private lateinit var adapter: PasswordsAdapter
@@ -99,7 +101,7 @@ class AddPasswordDialog : BottomSheetDialogFragment(),
     private fun initializeVariables(view: View) {
 
         viewModel = ViewModelProvider(requireActivity()).get(PasswordsViewModel::class.java)
-        adapter = PasswordsAdapter(requireContext())
+        adapter = PasswordsAdapter(requireContext(), this)
         dialog = Dialog(requireActivity())
 
         websiteInput = view.findViewById(R.id.websiteInput)
@@ -267,6 +269,10 @@ class AddPasswordDialog : BottomSheetDialogFragment(),
         userIc = userIcon
         pickedIcon.setImageResource(userIcon)
         dialog.dismiss()
+    }
+
+    override fun onPasswordClicked(password: Passwords) {
+        toast("${password.website} clicked")
     }
 }
 

@@ -19,8 +19,10 @@ import com.example.biosec.R
 import com.example.biosec.adapters.ArchivesAdapter
 import com.example.biosec.adapters.PasswordsAdapter
 import com.example.biosec.entities.Archives
+import com.example.biosec.entities.Passwords
 import com.example.biosec.fragments.Dialogs.AddPasswordDialog
 import com.example.biosec.fragments.Dialogs.ArchivesDialog
+import com.example.biosec.interfaces.PasswordClickedInterface
 import com.example.biosec.utils.SwipeGesture
 import com.example.biosec.viewmodels.ArchivesViewModel
 import com.example.biosec.viewmodels.PasswordsViewModel
@@ -29,7 +31,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), PasswordClickedInterface {
 
     private val alphabets = arrayOf('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
     'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V',
@@ -104,7 +106,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initializeVariables() {
 
-        adapter = PasswordsAdapter(this, )
+        adapter = PasswordsAdapter(this, this)
         archivesAdapter = ArchivesAdapter(this)
 
         toolbar = findViewById(R.id.mainToolbar)
@@ -181,5 +183,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun toast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onPasswordClicked(password: Passwords) {
+        toast("${password.website} clicked")
     }
 }

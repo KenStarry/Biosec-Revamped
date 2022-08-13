@@ -16,6 +16,7 @@
         <item name="textBlack500">@color/text_white_500</item>
         <item name="textBlack300">@color/text_white_300</item>
         <item name="textBlack100">@color/text_white_100</item>
+        <item name="textBlack100Trans">@color/text_white_100_trans</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorOnPrimary</item>
         <item name="android:windowLightStatusBar">false</item>

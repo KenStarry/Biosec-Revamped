@@ -6,5 +6,6 @@
     <attr name="textBlack500" format="reference"/>
     <attr name="textBlack300" format="reference"/>
     <attr name="textBlack100" format="reference"/>
+    <attr name="textBlack100Trans" format="reference"/>
 
 </resources>
