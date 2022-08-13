@@ -18,11 +18,11 @@ class ColorPickerAdapter(
 ) : RecyclerView.Adapter<ColorPickerAdapter.ColorViewHolder>() {
 
     val colorsArray = intArrayOf(
-        R.color.weak_pass, R.color.medium_pass,
-        R.color.strong_pass, R.color.blue,
-        R.color.archive, R.color.blue_light,
-        R.color.pink, R.color.text_black_100,
-        R.color.text_black_900
+        R.color.user_red_1, R.color.user_blue_1, R.color.user_green_1, R.color.user_purple_1,
+        R.color.user_red_2, R.color.user_blue_2, R.color.user_green_2, R.color.user_purple_2,
+        R.color.user_red_3, R.color.user_blue_3, R.color.user_green_3, R.color.user_purple_3,
+        R.color.user_red_4, R.color.user_blue_4, R.color.user_green_4, R.color.user_purple_4,
+        R.color.user_red_5, R.color.user_blue_5, R.color.user_green_5, R.color.user_purple_5
     )
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ColorViewHolder {
