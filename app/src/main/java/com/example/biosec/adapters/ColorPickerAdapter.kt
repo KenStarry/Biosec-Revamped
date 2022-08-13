@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.example.biosec.R
+import com.example.biosec.interfaces.OnItemClickListener
 import kotlinx.android.synthetic.main.color_picker_item.view.*
 
 class ColorPickerAdapter(
@@ -58,9 +59,5 @@ class ColorPickerAdapter(
                 listener.onItemClick(userCol)
             }
         }
-    }
-
-    interface OnItemClickListener {
-        fun onItemClick(userCol: Int)
     }
 }

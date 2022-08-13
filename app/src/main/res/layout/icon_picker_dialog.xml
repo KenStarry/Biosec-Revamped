@@ -16,9 +16,35 @@
         android:textStyle="bold"
         android:textColor="?attr/textBlack900"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Brand Logos"
+        android:textSize="@dimen/text_300"
+        android:textStyle="bold"
+        android:textColor="?attr/textBlack500"
+        android:layout_marginTop="20dp"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_height="200dp"
+        android:id="@+id/socialIconsRecyclerView"
+        android:scrollbars="vertical"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Icons"
+        android:textSize="@dimen/text_300"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        android:textColor="?attr/textBlack500"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scrollbars="vertical"
         android:id="@+id/pickIconRecyclerView"
         android:layout_marginTop="20dp"/>
 

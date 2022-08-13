@@ -11,14 +11,10 @@ import kotlinx.android.synthetic.main.icon_picker_item.view.*
 
 class IconPickerAdapter(
     private val context: Context,
+    private val iconsArray: IntArray,
     private val listener: IconClickedInterface
 
 ) : RecyclerView.Adapter<IconPickerAdapter.IconViewHolder>() {
-
-    private val iconsArray = intArrayOf(
-        R.drawable.ic__lock, R.drawable.ic_dashboard, R.drawable.ic_lock_open,
-        R.drawable.ic_archive, R.drawable.ic_delete_forever, R.drawable.ic_grain
-    )
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IconViewHolder {
 

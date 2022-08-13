@@ -19,6 +19,7 @@ import com.example.biosec.adapters.IconPickerAdapter
 import com.example.biosec.adapters.PasswordsAdapter
 import com.example.biosec.entities.Passwords
 import com.example.biosec.interfaces.IconClickedInterface
+import com.example.biosec.interfaces.OnItemClickListener
 import com.example.biosec.utils.PasswordStrengthCalculator
 import com.example.biosec.viewmodels.PasswordsViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -28,7 +29,7 @@ import kotlinx.android.synthetic.main.color_picker_dialog.*
 import kotlinx.android.synthetic.main.icon_picker_dialog.*
 
 class AddPasswordDialog : BottomSheetDialogFragment(),
-    ColorPickerAdapter.OnItemClickListener,
+    OnItemClickListener,
     IconClickedInterface {
 
     private lateinit var viewModel: PasswordsViewModel
@@ -51,6 +52,25 @@ class AddPasswordDialog : BottomSheetDialogFragment(),
     private var passColor: Int = R.color.weak_pass
     private var passIcon: Int = R.drawable.ic_weak_pass
     private val passwordStrengthCalculator = PasswordStrengthCalculator()
+
+    private val socialIconsArray = intArrayOf(
+        R.drawable.airtel_logo, R.drawable.amazon_logo, R.drawable.apple_logo,
+        R.drawable.cisco_logo, R.drawable.discord_logo, R.drawable.disney_logo,
+        R.drawable.facebook_logo, R.drawable.gmail_logo, R.drawable.google_logo,
+        R.drawable.hp_logo, R.drawable.instagram_logo, R.drawable.intel_logo,
+        R.drawable.lenovo_logo, R.drawable.linkedin_logo, R.drawable.louis_vuitton_logo,
+        R.drawable.mastercard_logo, R.drawable.microsoft_logo, R.drawable.nike_logo,
+        R.drawable.oracle_logo, R.drawable.pepsi_logo, R.drawable.safaricom_logo,
+        R.drawable.samsung_logo, R.drawable.snapchat_logo, R.drawable.telegram_logo,
+        R.drawable.telkom_logo, R.drawable.tiktok_logo, R.drawable.twitter_logo,
+        R.drawable.visa_logo, R.drawable.windows_defender_logo
+    )
+
+    private val iconsArray = intArrayOf(
+        R.drawable.user_ic_wash, R.drawable.user_ic_water, R.drawable.user_ic_webhook,
+        R.drawable.ic__lock, R.drawable.ic_dashboard, R.drawable.ic_lock_open,
+        R.drawable.ic_archive, R.drawable.ic_delete_forever, R.drawable.ic_grain
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -180,10 +200,17 @@ class AddPasswordDialog : BottomSheetDialogFragment(),
         dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
         val recyclerView = dialog.pickIconRecyclerView
-        val adapter = IconPickerAdapter(requireActivity(), this)
+        val socialIconsRecyclerView = dialog.socialIconsRecyclerView
+
+        val adapter = IconPickerAdapter(requireActivity(), iconsArray, this)
+        val socialAdapter = IconPickerAdapter(requireActivity(), socialIconsArray, this)
 
         recyclerView.adapter = adapter
         recyclerView.layoutManager =
+            GridLayoutManager(requireActivity(), 4, GridLayoutManager.VERTICAL, false)
+
+        socialIconsRecyclerView.adapter = socialAdapter
+        socialIconsRecyclerView.layoutManager =
             GridLayoutManager(requireActivity(), 4, GridLayoutManager.VERTICAL, false)
 
         dialog.show()
