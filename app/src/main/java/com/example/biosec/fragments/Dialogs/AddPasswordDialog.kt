@@ -152,7 +152,7 @@ class AddPasswordDialog : BottomSheetDialogFragment(),
         }
 
         //  Display Icon Picker
-        pickedIcon.setOnClickListener {
+        pickedIconHolder.setOnClickListener {
             displayIconDialog()
         }
 

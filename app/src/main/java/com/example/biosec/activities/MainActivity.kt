@@ -109,7 +109,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initializeVariables() {
 
-        adapter = PasswordsAdapter(this)
+        adapter = PasswordsAdapter(this, )
         archivesAdapter = ArchivesAdapter(this)
         bottomNavBar = findViewById(R.id.bottomNavBar)
         totalPasswordsCount = findViewById(R.id.totalPasswordsCount)
