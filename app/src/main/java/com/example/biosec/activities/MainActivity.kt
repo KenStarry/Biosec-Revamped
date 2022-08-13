@@ -27,6 +27,7 @@ import com.example.biosec.viewmodels.PasswordsViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -38,13 +39,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var archivesViewModel: ArchivesViewModel
     private lateinit var adapter: PasswordsAdapter
     private lateinit var archivesAdapter: ArchivesAdapter
-    private lateinit var recyclerView: RecyclerView
     private lateinit var toolbar: Toolbar
-    private lateinit var totalPasswordsCount: TextView
-    private lateinit var mainFab: FloatingActionButton
-    private lateinit var coordinatorLayout: CoordinatorLayout
-    private lateinit var bottomNavBar: BottomNavigationView
-    private lateinit var emptyTaskLottie: LinearLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,11 +57,11 @@ class MainActivity : AppCompatActivity() {
 
             //  if the list is empty, show the lottie animation
             if (it.isEmpty()) {
-                emptyTaskLottie.visibility = View.VISIBLE
-                recyclerView.visibility = View.GONE
+                emptyLottieHolder.visibility = View.VISIBLE
+                allPasswordsRecyclerView.visibility = View.GONE
             } else {
-                emptyTaskLottie.visibility = View.GONE
-                recyclerView.visibility = View.VISIBLE
+                emptyLottieHolder.visibility = View.GONE
+                allPasswordsRecyclerView.visibility = View.VISIBLE
             }
         }
 
@@ -111,17 +106,10 @@ class MainActivity : AppCompatActivity() {
 
         adapter = PasswordsAdapter(this, )
         archivesAdapter = ArchivesAdapter(this)
-        bottomNavBar = findViewById(R.id.bottomNavBar)
-        totalPasswordsCount = findViewById(R.id.totalPasswordsCount)
-        coordinatorLayout = findViewById(R.id.mainCoordinatorLayout)
-        recyclerView = findViewById(R.id.allPasswordsRecyclerView)
-        emptyTaskLottie = findViewById(R.id.emptyLottieHolder)
 
         toolbar = findViewById(R.id.mainToolbar)
         setSupportActionBar(toolbar)
         supportActionBar!!.title = ""
-
-        mainFab = findViewById(R.id.mainFab)
 
         mainFab.setOnClickListener {
 
@@ -173,17 +161,17 @@ class MainActivity : AppCompatActivity() {
         }
 
         val touchHelper = ItemTouchHelper(swipeGesture)
-        touchHelper.attachToRecyclerView(recyclerView)
+        touchHelper.attachToRecyclerView(allPasswordsRecyclerView)
     }
 
     private fun setupRecyclerView() {
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = adapter
+        allPasswordsRecyclerView.layoutManager = LinearLayoutManager(this)
+        allPasswordsRecyclerView.adapter = adapter
     }
 
     private fun snackbar() {
 
-        Snackbar.make(coordinatorLayout, "Hello This is me!", Snackbar.LENGTH_SHORT)
+        Snackbar.make(mainCoordinatorLayout, "Hello This is me!", Snackbar.LENGTH_SHORT)
             .setAnchorView(mainFab)
             .setAction("Okay", View.OnClickListener {
                 toast("Perfect")
