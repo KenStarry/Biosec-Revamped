@@ -30,6 +30,10 @@ class PasswordsViewModel(application: Application) : AndroidViewModel(applicatio
     fun getAlphabeticalPasswords(search: String): LiveData<List<Passwords>> {
         return repository.getAlphabeticalPasswords(search)
     }
+
+    fun getPasswordAt(pos: Int): LiveData<Passwords> {
+        return repository.getPasswordAt(pos)
+    }
 }
 
 

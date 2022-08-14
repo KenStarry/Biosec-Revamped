@@ -44,6 +44,10 @@ class PasswordsRepo(application: Application) {
         return dao.getAlphabeticalPass(search)
     }
 
+    fun getPasswordAt(pos: Int): LiveData<Passwords> {
+        return dao.getPasswordAt(pos)
+    }
+
 }
 
 

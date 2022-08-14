@@ -1,6 +1,7 @@
 package com.example.biosec.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.biosec.R
+import com.example.biosec.activities.ViewPasswordActivity
 import com.example.biosec.entities.Passwords
 import com.example.biosec.interfaces.PasswordClickedInterface
 import kotlinx.android.synthetic.main.password_item.view.*
@@ -49,6 +51,16 @@ class PasswordsAdapter(
                 holder.passSecurityIc.visibility = View.VISIBLE
             else
                 holder.passSecurityIc.visibility = View.GONE
+
+            holder.itemView.setOnClickListener {
+
+                val intent = Intent(context, ViewPasswordActivity::class.java)
+                intent.putExtra("PASS_ID", getPasswordAt(position).id)
+
+                context.startActivity(intent)
+
+                listener.onPasswordClicked(getPasswordAt(position))
+            }
         }
     }
 
@@ -65,7 +77,11 @@ class PasswordsAdapter(
         //  Set onClick listener for the passwords
         init {
             itemView.setOnClickListener {
-                listener.onPasswordClicked(getPasswordAt(bindingAdapterPosition))
+
+                if (bindingAdapterPosition != RecyclerView.NO_POSITION) {
+
+                    listener.onPasswordClicked(getPasswordAt(bindingAdapterPosition))
+                }
             }
         }
     }
