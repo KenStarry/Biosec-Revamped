@@ -5,6 +5,7 @@ import android.graphics.drawable.ShapeDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.example.biosec.R
@@ -12,6 +13,7 @@ import com.example.biosec.entities.Passwords
 import com.example.biosec.interfaces.PasswordClickedInterface
 import com.example.biosec.viewmodels.PasswordsViewModel
 import kotlinx.android.synthetic.main.activity_view_password.*
+import kotlinx.android.synthetic.main.view_toolbar.*
 
 class ViewPasswordActivity : AppCompatActivity(), PasswordClickedInterface {
 
@@ -21,6 +23,8 @@ class ViewPasswordActivity : AppCompatActivity(), PasswordClickedInterface {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_password)
+
+        setupToolbar()
 
         val passId = intent.getIntExtra("PASS_ID", 0)
 
@@ -53,6 +57,13 @@ class ViewPasswordActivity : AppCompatActivity(), PasswordClickedInterface {
 
     fun toast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun setupToolbar() {
+        val toolbar = viewToolbar as Toolbar
+        setSupportActionBar(toolbar)
+        supportActionBar!!.title = ""
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
     }
 
     override fun onPasswordClicked(password: Passwords) {

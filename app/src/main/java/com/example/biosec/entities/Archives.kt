@@ -14,7 +14,12 @@ class Archives(
     @ColumnInfo(name = "password_strength_ic") val passStrengthIcon: Int?,
     @ColumnInfo(name = "locked") val isLocked: Boolean?,
     @ColumnInfo(name = "pass_icon") val passIcon: Int?,
-    @ColumnInfo(name = "pass_color") val passColor: Int?
+    @ColumnInfo(name = "pass_color") val passColor: Int?,
+    @ColumnInfo(name = "url") val url: String?,
+    @ColumnInfo(name = "phone") val phoneNumber: String?,
+    @ColumnInfo(name = "security_question") val secQuestion: String?,
+    @ColumnInfo(name = "security_answer") val secAnswer: String?,
+    @ColumnInfo(name = "description") val description: String?
 ) {
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0

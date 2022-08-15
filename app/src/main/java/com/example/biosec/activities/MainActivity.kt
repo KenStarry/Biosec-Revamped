@@ -153,7 +153,12 @@ class MainActivity : AppCompatActivity(), PasswordClickedInterface {
                             passStrengthIcon = passwordItem.passStrengthIcon,
                             isLocked = passwordItem.isLocked,
                             passIcon = passwordItem.passIcon,
-                            passColor = passwordItem.passColor
+                            passColor = passwordItem.passColor,
+                            url = "https://linkedin.com",
+                            phoneNumber = "0717446607",
+                            secQuestion = "Which School Did you go to?",
+                            secAnswer = "Starehe",
+                            description = "Where all coding begins"
                         ))
                         viewModel.deletePass(passwordItem)
                         toast("${passwordItem.website.toString()} archived successfully")

@@ -177,7 +177,12 @@ PasswordClickedInterface{
                         passStrengthIcon = passIcon,
                         website = website,
                         passIcon = userIc,
-                        passColor = userColor
+                        passColor = userColor,
+                        url = "https://linkedin.com",
+                        phoneNumber = "0717446607",
+                        secQuestion = "Which School Did you go to?",
+                        secAnswer = "Starehe",
+                        description = "Where all coding begins"
                     )
                 )
 

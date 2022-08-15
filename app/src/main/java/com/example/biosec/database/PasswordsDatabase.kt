@@ -12,7 +12,7 @@ import com.example.biosec.entities.Archives
 import com.example.biosec.entities.Passwords
 import com.example.biosec.utils.subscribeOnBackground
 
-@Database(entities = [Passwords::class, Archives::class], version = 4)
+@Database(entities = [Passwords::class, Archives::class], version = 5)
 abstract class PasswordsDatabase : RoomDatabase() {
 
     abstract fun passwordsDao(): PasswordsDao
@@ -61,7 +61,12 @@ abstract class PasswordsDatabase : RoomDatabase() {
                         passStrengthIcon = R.drawable.ic_weak_pass,
                         isLocked = true,
                         passIcon = R.drawable.ic_circle,
-                        passColor = R.color.blue_light
+                        passColor = R.color.blue_light,
+                        url = "https://linkedin.com",
+                        phoneNumber = "0717446607",
+                        secQuestion = "Which School Did you go to?",
+                        secAnswer = "Starehe",
+                        description = "Where all coding begins"
                     )
                 )
 
@@ -74,7 +79,12 @@ abstract class PasswordsDatabase : RoomDatabase() {
                         passStrengthIcon = R.drawable.ic_weak_pass,
                         isLocked = false,
                         passIcon = R.drawable.ic_circle,
-                        passColor = R.color.blue
+                        passColor = R.color.blue,
+                        url = "https://linkedin.com",
+                        phoneNumber = "0717446607",
+                        secQuestion = "Which School Did you go to?",
+                        secAnswer = "Starehe",
+                        description = "Where all coding begins"
                     )
                 )
 
@@ -87,7 +97,12 @@ abstract class PasswordsDatabase : RoomDatabase() {
                         passStrengthIcon = R.drawable.ic_strong_pass,
                         isLocked = true,
                         passIcon = R.drawable.ic_circle,
-                        passColor = R.color.blue_light
+                        passColor = R.color.blue_light,
+                        url = "https://linkedin.com",
+                        phoneNumber = "0717446607",
+                        secQuestion = "Which School Did you go to?",
+                        secAnswer = "Starehe",
+                        description = "Where all coding begins"
                     )
                 )
 
@@ -100,7 +115,12 @@ abstract class PasswordsDatabase : RoomDatabase() {
                         passStrengthIcon = R.drawable.ic_strong_pass,
                         isLocked = true,
                         passIcon = R.drawable.ic_circle,
-                        passColor = R.color.blue_light
+                        passColor = R.color.blue_light,
+                        url = "https://linkedin.com",
+                        phoneNumber = "0717446607",
+                        secQuestion = "Which School Did you go to?",
+                        secAnswer = "Starehe",
+                        description = "Where all coding begins"
                     )
                 )
             }
