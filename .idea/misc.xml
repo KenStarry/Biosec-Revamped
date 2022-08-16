@@ -14,7 +14,14 @@
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/drawable/ic_security.xml" value="0.1855" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/drawable/ic_sort.xml" value="0.1855" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/drawable/ic_strong_pass.xml" value="0.1265" />
+        <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/drawable/ic_update.xml" value="0.115" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/drawable/ic_verified.xml" value="0.1855" />
+        <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/drawable/ic_view_description.xml" value="0.17" />
+        <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/drawable/ic_view_email.xml" value="0.17" />
+        <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/drawable/ic_view_password.xml" value="0.17" />
+        <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/drawable/ic_view_phone.xml" value="0.17" />
+        <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/drawable/ic_view_question_answer.xml" value="0.17" />
+        <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/drawable/ic_view_question_mark.xml" value="0.17" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/drawable/ic_weak_pass.xml" value="0.1855" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/drawable/password_ripple.xml" value="0.115" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/drawable/pill_button.xml" value="0.1265" />
@@ -23,6 +30,7 @@
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/drawable/rounded_button.xml" value="0.1265" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/drawable/rounded_button_alt.xml" value="0.115" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/drawable/rounded_button_filled.xml" value="0.1265" />
+        <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/drawable/rounded_button_secondary.xml" value="0.115" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/drawable/rounded_dialog.xml" value="0.1265" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/drawable/rounded_edittext.xml" value="0.1265" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/drawable/windows_defender_logo.xml" value="0.115" />
@@ -37,10 +45,12 @@
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/layout/main_toolbar.xml" value="0.22447916666666667" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/layout/password_alphabetical_item.xml" value="0.22447916666666667" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/layout/password_item.xml" value="0.33" />
+        <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/layout/view_password_item.xml" value="0.33" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/layout/view_toolbar.xml" value="0.2234375" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/menu-v26/main_toolbar_menu.xml" value="0.22447916666666667" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/menu/bottom_nav_menu.xml" value="0.22447916666666667" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/menu/main_toolbar_menu.xml" value="0.22447916666666667" />
+        <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/menu/view_pass_toolbar_menu.xml" value="0.22447916666666667" />
       </map>
     </option>
   </component>
