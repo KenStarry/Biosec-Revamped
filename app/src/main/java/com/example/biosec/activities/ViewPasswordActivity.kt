@@ -12,9 +12,11 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.room.Update
 import com.example.biosec.R
 import com.example.biosec.adapters.ViewPasswordAdapter
 import com.example.biosec.entities.Passwords
+import com.example.biosec.fragments.Dialogs.UpdatePasswordDialog
 import com.example.biosec.interfaces.PasswordClickedInterface
 import com.example.biosec.viewmodels.PasswordsViewModel
 import kotlinx.android.synthetic.main.activity_view_password.*
@@ -25,6 +27,8 @@ class ViewPasswordActivity : AppCompatActivity(), PasswordClickedInterface {
     //  Grabbing values from database
     private lateinit var viewModel: PasswordsViewModel
     private lateinit var adapter: ViewPasswordAdapter
+
+    private lateinit var pass: Passwords
 
     val passwordColumns = arrayOf(
         "User Name",
@@ -67,6 +71,8 @@ class ViewPasswordActivity : AppCompatActivity(), PasswordClickedInterface {
                 5 to password.secAnswer,
                 6 to password.description
             )
+
+            setPass(password)
 
             initializeDbValues(password)
             buildRecyclerView(passwordMap, password.passColor!!)
@@ -166,6 +172,15 @@ class ViewPasswordActivity : AppCompatActivity(), PasswordClickedInterface {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
     }
 
+    //  Setters and getters for the id
+    private fun setPass(password: Passwords) {
+        pass = password
+    }
+
+    private fun getPass(): Passwords {
+        return pass
+    }
+
     override fun onPasswordClicked(password: Passwords) {
         toast("${password.id}")
     }
@@ -179,7 +194,10 @@ class ViewPasswordActivity : AppCompatActivity(), PasswordClickedInterface {
 
         when (item.itemId) {
             R.id.updatePassMenu -> {
-                toast("Update Password")
+
+                //  Open Update Password Dialog
+                val updateDialog = UpdatePasswordDialog(getPass())
+                updateDialog.show(supportFragmentManager, "UpdateDialog")
             }
         }
         return super.onOptionsItemSelected(item)
