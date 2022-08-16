@@ -40,14 +40,6 @@ PasswordClickedInterface{
     @get:JvmName("MyDialog")
     private lateinit var dialog: Dialog
 
-    private lateinit var websiteInput: EditText
-    private lateinit var emailInput: EditText
-    private lateinit var passwordInput: EditText
-    private lateinit var savePassBtn: TextView
-    private lateinit var passCheckerText: TextView
-    private lateinit var passCheckerIcon: ImageView
-    private lateinit var lockBtn: ImageButton
-
     private var userColor = R.color.medium_pass
     private var userIc = R.drawable.ic_dashboard
 
@@ -103,16 +95,6 @@ PasswordClickedInterface{
         viewModel = ViewModelProvider(requireActivity()).get(PasswordsViewModel::class.java)
         adapter = PasswordsAdapter(requireContext(), this)
         dialog = Dialog(requireActivity())
-
-        websiteInput = view.findViewById(R.id.websiteInput)
-        emailInput = view.findViewById(R.id.emailInput)
-        passwordInput = view.findViewById(R.id.passwordInput)
-        savePassBtn = view.findViewById(R.id.savePassBtn)
-        passCheckerText = view.findViewById(R.id.passCheckerText)
-        passCheckerIcon = view.findViewById(R.id.passCheckerIcon)
-        lockBtn = view.findViewById(R.id.lockBtn)
-
-
     }
 
     private fun setupListeners() {
@@ -158,6 +140,7 @@ PasswordClickedInterface{
             displayIconDialog()
         }
 
+        //  Save Button
         savePassBtn.setOnClickListener {
 
             //  Check if all the edittexts are filled out
@@ -167,10 +150,16 @@ PasswordClickedInterface{
                 val website = websiteInput.text.toString()
                 val email = emailInput.text.toString()
                 val password = passwordInput.text.toString()
+                val url = urlInput.text.toString()
+                val username = usernameInput.text.toString()
+                val phone = phoneInput.text.toString()
+                val secQuestion = securityQuestionInput.text.toString()
+                val secAnswer = securityAnswerInput.text.toString()
+                val desc = descriptionInput.text.toString()
 
                 viewModel.insertPass(
                     Passwords(
-                        userName = "Someone",
+                        userName = username,
                         emailAddress = email,
                         password = password,
                         isLocked = lockedState,
@@ -178,11 +167,11 @@ PasswordClickedInterface{
                         website = website,
                         passIcon = userIc,
                         passColor = userColor,
-                        url = "https://linkedin.com",
-                        phoneNumber = "0717446607",
-                        secQuestion = "Which School Did you go to?",
-                        secAnswer = "Starehe",
-                        description = "Where all coding begins"
+                        url = url,
+                        phoneNumber = phone,
+                        secQuestion = secQuestion,
+                        secAnswer = secAnswer,
+                        description = desc
                     )
                 )
 
