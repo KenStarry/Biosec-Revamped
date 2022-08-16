@@ -5,6 +5,8 @@ import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
@@ -32,10 +34,14 @@ class ViewPasswordAdapter(
     override fun onBindViewHolder(holder: ViewPassViewHolder, position: Int) {
         with (getItemId(position)) {
 
+            val animation: Animation = AnimationUtils.loadAnimation(holder.itemView.context, android.R.anim.slide_in_left)
+
             holder.colName.text = passwordColumns.get(position)
             holder.colValue.text = passwordMap.get(position)
             holder.icon.setImageResource(passwordIcons.get(position))
             holder.line.backgroundTintList = ContextCompat.getColorStateList(context, passwordColor)
+
+            holder.itemView.startAnimation(animation)
         }
     }
 
