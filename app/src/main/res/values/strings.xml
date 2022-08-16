@@ -3,4 +3,8 @@
     <string name="title">Passwords</string>
     <string name="add_password_title">Quick Add</string>
     <string name="archived_title">Archived</string>
+    <string name="weak_pass_text">weak</string>
+    <string name="medium_pass_text">medium</string>
+    <string name="strong_pass_text">strong</string>
+    <string name="certified_pass_text">certified</string>
 </resources>

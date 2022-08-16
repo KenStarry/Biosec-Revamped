@@ -91,9 +91,12 @@ class ViewPasswordActivity : AppCompatActivity(), PasswordClickedInterface {
         watermarkImage.setImageResource(password.passIcon)
 
         viewIcon.imageTintList = ContextCompat.getColorStateList(this, password.passColor!!)
-        viewCopyPass.imageTintList = ContextCompat.getColorStateList(this, password.passColor!!)
+        viewCopyPass.imageTintList = ContextCompat.getColorStateList(this, password.passColor)
+        viewPassBarChart.imageTintList = ContextCompat.getColorStateList(this, password.passColor)
+        viewPassQuestionMark.imageTintList = ContextCompat.getColorStateList(this, password.passColor)
 
         viewWebsite.text = password.website
+        viewPassCharacterCount.text = password.password!!.toString().length.toString()
 
         //  Adjust drawable color
         val imageDrawable = openWebsiteBtn.background.mutate()
@@ -109,6 +112,38 @@ class ViewPasswordActivity : AppCompatActivity(), PasswordClickedInterface {
                     password.passColor
                 )
             )
+        }
+
+        //  Checking the password strength
+        when (password.passStrengthIcon) {
+
+            R.drawable.ic_weak_pass -> {
+                viewPassLottie.setAnimation(R.raw.alert_lottie)
+                viewPassLottie.playAnimation()
+                viewPassPasswordStatusText.text = getString(R.string.weak_pass_text)
+                viewPassPasswordStatusText.setTextColor(ContextCompat.getColor(this, R.color.weak_pass))
+            }
+
+            R.drawable.ic_medium_pass -> {
+                viewPassLottie.setAnimation(R.raw.medium_pass)
+                viewPassLottie.playAnimation()
+                viewPassPasswordStatusText.text = getString(R.string.medium_pass_text)
+                viewPassPasswordStatusText.setTextColor(ContextCompat.getColor(this, R.color.medium_pass))
+            }
+
+            R.drawable.ic_strong_pass -> {
+                viewPassLottie.setAnimation(R.raw.strong_pass)
+                viewPassLottie.playAnimation()
+                viewPassPasswordStatusText.text = getString(R.string.strong_pass_text)
+                viewPassPasswordStatusText.setTextColor(ContextCompat.getColor(this, R.color.strong_pass))
+            }
+
+            R.drawable.ic_verified -> {
+                viewPassLottie.setAnimation(R.raw.certified_pass_blue)
+                viewPassLottie.playAnimation()
+                viewPassPasswordStatusText.text = getString(R.string.certified_pass_text)
+                viewPassPasswordStatusText.setTextColor(ContextCompat.getColor(this, R.color.certified_pass))
+            }
         }
     }
 
