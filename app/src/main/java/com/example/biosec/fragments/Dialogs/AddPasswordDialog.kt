@@ -28,11 +28,12 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.add_password_dialog.*
 import kotlinx.android.synthetic.main.color_picker_dialog.*
 import kotlinx.android.synthetic.main.icon_picker_dialog.*
+import kotlinx.android.synthetic.main.update_password_dialog.*
 
 class AddPasswordDialog : BottomSheetDialogFragment(),
     OnItemClickListener,
     IconClickedInterface,
-PasswordClickedInterface{
+    PasswordClickedInterface {
 
     private lateinit var viewModel: PasswordsViewModel
     private lateinit var adapter: PasswordsAdapter
@@ -147,10 +148,19 @@ PasswordClickedInterface{
             if (!isEditTextEmpty()) {
 
                 //  Add insert items to database
-                val website = websiteInput.text.toString()
+                val website = websiteInput.text.toString().ifBlank { requireActivity().getString(R.string.no_title) }
+
                 val email = emailInput.text.toString()
                 val password = passwordInput.text.toString()
-                val url = urlInput.text.toString()
+                val url =
+                    if (urlInput.text.toString().isNotBlank() && !urlInput.text.toString()
+                            .startsWith("http://") && !urlInput.text.toString()
+                            .startsWith("https://") && !urlInput.text.toString().endsWith(".com")
+                    ) {
+                        "https://${urlInput.text}.com"
+                    } else
+                        urlInput.text.toString()
+
                 val username = usernameInput.text.toString()
                 val phone = phoneInput.text.toString()
                 val secQuestion = securityQuestionInput.text.toString()

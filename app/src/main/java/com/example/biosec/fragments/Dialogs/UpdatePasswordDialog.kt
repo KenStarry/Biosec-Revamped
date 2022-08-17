@@ -37,7 +37,7 @@ class UpdatePasswordDialog(
 ) : BottomSheetDialogFragment(),
     OnItemClickListener,
     IconClickedInterface,
-PasswordClickedInterface{
+    PasswordClickedInterface {
 
     private lateinit var viewModel: PasswordsViewModel
     private lateinit var adapter: PasswordsAdapter
@@ -105,7 +105,12 @@ PasswordClickedInterface{
                 passColor = R.color.weak_pass
                 passIcon = R.drawable.ic_weak_pass
                 updatePassCheckerText.text = "Weak"
-                updatePassCheckerText.setTextColor(ContextCompat.getColor(requireActivity(), R.color.weak_pass))
+                updatePassCheckerText.setTextColor(
+                    ContextCompat.getColor(
+                        requireActivity(),
+                        R.color.weak_pass
+                    )
+                )
                 updatePassCheckerIcon.setImageResource(R.drawable.ic_weak_pass)
             }
 
@@ -113,7 +118,12 @@ PasswordClickedInterface{
                 passColor = R.color.medium_pass
                 passIcon = R.drawable.ic_medium_pass
                 updatePassCheckerText.text = "Medium"
-                updatePassCheckerText.setTextColor(ContextCompat.getColor(requireActivity(), R.color.medium_pass))
+                updatePassCheckerText.setTextColor(
+                    ContextCompat.getColor(
+                        requireActivity(),
+                        R.color.medium_pass
+                    )
+                )
                 updatePassCheckerIcon.setImageResource(R.drawable.ic_medium_pass)
             }
 
@@ -121,7 +131,12 @@ PasswordClickedInterface{
                 passColor = R.color.strong_pass
                 passIcon = R.drawable.ic_strong_pass
                 updatePassCheckerText.text = "Strong"
-                updatePassCheckerText.setTextColor(ContextCompat.getColor(requireActivity(), R.color.strong_pass))
+                updatePassCheckerText.setTextColor(
+                    ContextCompat.getColor(
+                        requireActivity(),
+                        R.color.strong_pass
+                    )
+                )
                 updatePassCheckerIcon.setImageResource(R.drawable.ic_strong_pass)
             }
 
@@ -129,7 +144,12 @@ PasswordClickedInterface{
                 passColor = R.color.certified_pass
                 passIcon = R.drawable.ic_verified
                 updatePassCheckerText.text = "Certified"
-                updatePassCheckerText.setTextColor(ContextCompat.getColor(requireActivity(), R.color.certified_pass))
+                updatePassCheckerText.setTextColor(
+                    ContextCompat.getColor(
+                        requireActivity(),
+                        R.color.certified_pass
+                    )
+                )
                 updatePassCheckerIcon.setImageResource(R.drawable.ic_verified)
             }
         }
@@ -143,7 +163,12 @@ PasswordClickedInterface{
         updateSecurityQuestionInput.setText(pass.secQuestion.toString())
         updateSecurityAnswerInput.setText(pass.secAnswer.toString())
         updateDescriptionInput.setText(pass.description.toString())
-        updatePickedColor.setCardBackgroundColor(ContextCompat.getColor(requireActivity(), pass.passColor!!))
+        updatePickedColor.setCardBackgroundColor(
+            ContextCompat.getColor(
+                requireActivity(),
+                pass.passColor!!
+            )
+        )
         updatePickedIcon.setImageResource(pass.passIcon!!)
 
         userColor = pass.passColor
@@ -200,10 +225,18 @@ PasswordClickedInterface{
             if (!isEditTextEmpty()) {
 
                 //  Add insert items to database
-                val website = updateWebsiteInput.text.toString()
+                val website = updateWebsiteInput.text.toString().ifBlank { requireActivity().getString(R.string.no_title) }
+
                 val email = updateEmailInput.text.toString()
                 val password = updatePasswordInput.text.toString()
-                val url = updateUrlInput.text.toString()
+                val url =
+                    if (updateUrlInput.text.toString().isNotBlank() && !updateUrlInput.text.toString().startsWith("http://") && !updateUrlInput.text.toString()
+                            .startsWith("https://") && !updateUrlInput.text.toString().endsWith(".com")
+                    ) {
+                        "https://${updateUrlInput.text}.com"
+                    } else
+                        updateUrlInput.text.toString()
+
                 val username = updateUsernameInput.text.toString()
                 val phone = updatePhoneInput.text.toString()
                 val secQuestion = updateSecurityQuestionInput.text.toString()
@@ -237,7 +270,7 @@ PasswordClickedInterface{
                 val bottomSheetBehaviour = BottomSheetBehavior.from(requireView().parent as View)
                 bottomSheetBehaviour.state = BottomSheetBehavior.STATE_HIDDEN
 
-                toast("id ${pass.id} Added")
+                toast("Password updated successfully!")
 
             } else {
                 toast("Fields cannot be empty")

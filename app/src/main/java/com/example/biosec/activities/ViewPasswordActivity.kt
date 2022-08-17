@@ -1,7 +1,9 @@
 package com.example.biosec.activities
 
+import android.content.Intent
 import android.graphics.drawable.GradientDrawable
 import android.graphics.drawable.ShapeDrawable
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -86,7 +88,18 @@ class ViewPasswordActivity : AppCompatActivity(), PasswordClickedInterface {
         }
 
         openWebsiteBtn.setOnClickListener {
-            toast("Website opened")
+
+            val passwordUrl = getPass().url
+
+            if (!passwordUrl.isNullOrBlank()) {
+
+                val browserIntent = Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse(passwordUrl)
+                )
+
+                startActivity(browserIntent)
+            }
         }
     }
 

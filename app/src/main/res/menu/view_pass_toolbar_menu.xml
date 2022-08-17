@@ -8,4 +8,9 @@
         android:icon="@drawable/ic_update"
         app:showAsAction="ifRoom"/>
 
+    <item
+        android:id="@+id/viewPassDeleteMenu"
+        android:title="Delete Password"
+        app:showAsAction="never"/>
+
 </menu>

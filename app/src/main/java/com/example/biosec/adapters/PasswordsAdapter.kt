@@ -40,8 +40,13 @@ class PasswordsAdapter(
     override fun onBindViewHolder(holder: PasswordHolder, position: Int) {
         with(getItem(position)) {
 
-            holder.passTitle.text = website
-            holder.passDesc.text = emailAddress
+            holder.passTitle.text = website!!.ifBlank { context.getString(R.string.no_title) }
+
+            if (emailAddress!!.isNotBlank())
+                holder.passDesc.text = emailAddress
+            else
+                holder.passDesc.visibility = View.GONE
+
             holder.passVerifiedIc.setImageResource(passStrengthIcon!!)
             holder.passIconRecycler.setImageResource(passIcon!!)
             holder.passIconRecycler.imageTintList =

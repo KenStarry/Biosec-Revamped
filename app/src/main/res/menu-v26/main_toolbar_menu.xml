@@ -20,4 +20,9 @@
         android:title="Hide Details"
         app:showAsAction="never"/>
 
+    <item
+        android:id="@+id/deleteAllMenu"
+        android:title="Delete All Passwords"
+        app:showAsAction="never"/>
+
 </menu>
