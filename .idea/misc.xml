@@ -37,16 +37,19 @@
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/drawable/rounded_view_secondary.xml" value="0.115" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/drawable/windows_defender_logo.xml" value="0.115" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/layout/activity_settings.xml" value="0.21041666666666667" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/layout/activity_view_password.xml" value="0.33" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/layout/add_password_dialog.xml" value="0.22447916666666667" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/layout/archives_dialog.xml" value="0.33" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/layout/color_picker_dialog.xml" value="0.22447916666666667" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/layout/color_picker_item.xml" value="0.22447916666666667" />
+        <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/layout/fragment_home.xml" value="0.22447916666666667" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/layout/icon_picker_dialog.xml" value="0.22447916666666667" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/layout/icon_picker_item.xml" value="0.67" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/layout/main_toolbar.xml" value="0.22447916666666667" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/layout/password_alphabetical_item.xml" value="0.22447916666666667" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/layout/password_item.xml" value="0.33" />
+        <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/layout/settings_toolbar.xml" value="0.22447916666666667" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/layout/update_password_dialog.xml" value="0.22447916666666667" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/layout/view_password_item.xml" value="0.33" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/layout/view_toolbar.xml" value="0.2234375" />
@@ -57,7 +60,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
