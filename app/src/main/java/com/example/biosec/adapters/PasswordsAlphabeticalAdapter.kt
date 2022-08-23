@@ -39,14 +39,13 @@ class PasswordsAlphabeticalAdapter(
         holder.alphabetTitle.text = alphabetList.get(position).toString()
 
         parentAdapter.submitList(passwordsList)
+
         holder.childRecyclerView.adapter = parentAdapter
         holder.childRecyclerView.layoutManager = LinearLayoutManager(
             holder.childRecyclerView.context,
             LinearLayoutManager.VERTICAL,
             false
         )
-
-        Toast.makeText(context, passwordsList.size.toString(), Toast.LENGTH_SHORT).show()
 
     }
 

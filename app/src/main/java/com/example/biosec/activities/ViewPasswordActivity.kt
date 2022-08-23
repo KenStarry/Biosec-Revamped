@@ -111,11 +111,8 @@ class ViewPasswordActivity : AppCompatActivity(), PasswordClickedInterface {
 
         viewIcon.imageTintList = ContextCompat.getColorStateList(this, password.passColor!!)
         viewCopyPass.imageTintList = ContextCompat.getColorStateList(this, password.passColor)
-        viewPassBarChart.imageTintList = ContextCompat.getColorStateList(this, password.passColor)
-        viewPassQuestionMark.imageTintList = ContextCompat.getColorStateList(this, password.passColor)
 
         viewWebsite.text = password.website
-        viewPassCharacterCount.text = password.password!!.toString().length.toString()
 
         //  Adjust drawable color
         val imageDrawable = openWebsiteBtn.background.mutate()

@@ -39,10 +39,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListener {
 
-    private val alphabets = arrayOf('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
-    'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V',
-    'W', 'X', 'Y', 'Z')
-
     private lateinit var archivesViewModel: ArchivesViewModel
     private lateinit var archivesAdapter: ArchivesAdapter
     private lateinit var toolbar: Toolbar
@@ -66,30 +62,8 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
         setSupportActionBar(toolbar)
         supportActionBar!!.title = ""
 
-        mainFab.setOnClickListener {
-
-            val dialog = AddPasswordDialog()
-            dialog.show(supportFragmentManager, "AddPasswordDialog")
-        }
-
-        mainFab.setOnLongClickListener {
-
-            snackbar()
-            return@setOnLongClickListener true
-        }
-
         //  Bottom Navigation View
         bottomNavBar.setOnItemSelectedListener(this)
-    }
-
-    private fun snackbar() {
-
-        Snackbar.make(mainCoordinatorLayout, "Hello This is me!", Snackbar.LENGTH_SHORT)
-            .setAnchorView(mainFab)
-            .setAction("Okay", View.OnClickListener {
-                toast("Perfect")
-            })
-            .show()
     }
 
     private fun toast(message: String) {

@@ -15,6 +15,7 @@ import com.example.biosec.adapters.ArchivesAdapter
 import com.example.biosec.adapters.PasswordsAdapter
 import com.example.biosec.entities.Archives
 import com.example.biosec.entities.Passwords
+import com.example.biosec.fragments.Dialogs.AddPasswordDialog
 import com.example.biosec.interfaces.PasswordClickedInterface
 import com.example.biosec.utils.SwipeGesture
 import com.example.biosec.viewmodels.ArchivesViewModel
@@ -24,6 +25,10 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment(), PasswordClickedInterface {
+
+    private val alphabets = arrayOf('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
+        'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V',
+        'W', 'X', 'Y', 'Z')
 
     private lateinit var viewModel: PasswordsViewModel
     private lateinit var archivesViewModel: ArchivesViewModel
@@ -123,6 +128,16 @@ class HomeFragment : Fragment(), PasswordClickedInterface {
         val touchHelper = ItemTouchHelper(swipeGesture)
         touchHelper.attachToRecyclerView(allPasswordsRecyclerView)
 
+        mainFab.setOnClickListener {
+
+            val dialog = AddPasswordDialog()
+            dialog.show(childFragmentManager, "AddPasswordDialog")
+        }
+
+        mainFab.setOnLongClickListener {
+
+            return@setOnLongClickListener true
+        }
     }
 
     private fun setupRecyclerView() {
