@@ -15,7 +15,8 @@
         tools:targetApi="31">
         <activity
             android:name=".activities.SettingsActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".activities.MainActivity"/>
         <activity
             android:name=".activities.ViewPasswordActivity"
             android:exported="false"

@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Programming/Android/Projects/Biosec/app/src/main/res/drawable/rounded_button.xml" value="0.1" />
+        <entry key="..\:/Programming/Android/Projects/Biosec/app/src/main/res/drawable/rounded_view_primary.xml" value="0.1" />
+        <entry key="..\:/Programming/Android/Projects/Biosec/app/src/main/res/drawable/rounded_view_secondary.xml" value="0.1" />
+        <entry key="..\:/Programming/Android/Projects/Biosec/app/src/main/res/layout/activity_settings.xml" value="0.33" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/drawable/ic__lock.xml" value="0.1855" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/drawable/ic_archive.xml" value="0.1265" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/drawable/ic_copy.xml" value="0.1855" />

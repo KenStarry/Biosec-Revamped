@@ -1,32 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
     android:background="?attr/colorOnSecondary"
     tools:context=".activities.SettingsActivity">
 
-    <RelativeLayout
+    <include
+        layout="@layout/settings_toolbar"
+        android:id="@+id/settingsToolbar"/>
+
+    <TextView
+        android:id="@+id/settingsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/settingsToolbar"
+        android:lines="1"
+        android:text="@string/settings_title"
+        android:textColor="?attr/textBlack900"
+        android:textSize="@dimen/text_800"
+        android:textStyle="bold" />
+
+    <!--Theme Settings-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/settingsThemeTitle"
+        android:layout_marginTop="32dp"
+        android:layout_below="@id/settingsTitle"
+        android:lines="1"
+        android:text="@string/settings_themes_title"
+        android:textColor="?attr/textBlack700"
+        android:textSize="@dimen/text_500"
+        android:textStyle="bold" />
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/rounded_view_primary"
+        android:layout_below="@id/settingsThemeTitle"
+        android:orientation="vertical">
 
-        <include
-            layout="@layout/settings_toolbar"
-            android:id="@+id/settingsToolbar"/>
-
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
+        <!--Dark Mode-->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/settingsToolbar"
-            android:lines="1"
-            android:text="@string/settings_title"
-            android:textColor="?attr/textBlack900"
-            android:textSize="@dimen/text_800"
-            android:textStyle="bold" />
+            android:layout_marginBottom="24dp"
+            android:orientation="horizontal">
 
-    </RelativeLayout>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:lines="1"
+                android:text="Dark Mode"
+                android:textColor="?attr/textBlack900"
+                android:textSize="@dimen/text_300"
+                android:textStyle="bold" />
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/settingsDarkModeSwitch"
+                android:theme="@style/ThemeOverlay.MySwitch"/>
+
+        </LinearLayout>
+
+        <!--Light Mode-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:lines="1"
+                android:text="Light Mode"
+                android:textColor="?attr/textBlack900"
+                android:textSize="@dimen/text_300"
+                android:textStyle="bold" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/settingsLightModeSwitch"
+                android:theme="@style/ThemeOverlay.MySwitch"/>
+
+        </LinearLayout>
+
+        <!--System Mode-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:lines="1"
+                android:text="Follow System"
+                android:textColor="?attr/textBlack900"
+                android:textSize="@dimen/text_300"
+                android:textStyle="bold" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/settingsSystemModeSwitch"
+                android:theme="@style/ThemeOverlay.MySwitch"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
