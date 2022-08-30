@@ -5,7 +5,7 @@
     <color name="pink">#D90368</color>
     <color name="delete">#FFACA7</color>
     <color name="archive">#C0FFA4</color>
-    <color name="blue_light">#EDFBFF</color>
+    <color name="blue_light">#194CC9F0</color>
 
     <!--Password Colors-->
     <color name="certified_pass">#4CC9F0</color>

@@ -7,16 +7,25 @@ import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.biosec.R
 import com.example.biosec.daos.ArchivesDao
+import com.example.biosec.daos.GroupsDao
 import com.example.biosec.daos.PasswordsDao
 import com.example.biosec.entities.Archives
+import com.example.biosec.entities.Groups
 import com.example.biosec.entities.Passwords
 import com.example.biosec.utils.subscribeOnBackground
 
-@Database(entities = [Passwords::class, Archives::class], version = 5)
+@Database(
+    entities = [
+        Passwords::class,
+        Archives::class,
+        Groups::class
+    ], version = 6
+)
 abstract class PasswordsDatabase : RoomDatabase() {
 
     abstract fun passwordsDao(): PasswordsDao
     abstract fun archivesDao(): ArchivesDao
+    abstract fun groupsDao(): GroupsDao
 
     companion object {
 
@@ -50,8 +59,35 @@ abstract class PasswordsDatabase : RoomDatabase() {
         private fun populateDatabase(db: PasswordsDatabase) {
             val dao = db.passwordsDao()
             val archivesDao = db.archivesDao()
+            val groupsDao = db.groupsDao()
 
             subscribeOnBackground {
+
+                groupsDao.insertGroup(
+                    Groups(
+                        title = "Programming",
+                        icon = R.drawable.ic_bar_chart,
+                        color = R.color.blue
+                    )
+                )
+
+                groupsDao.insertGroup(
+                    Groups(
+                        title = "Coding",
+                        icon = R.drawable.ic_bar_chart,
+                        color = R.color.blue
+                    )
+                )
+
+                groupsDao.insertGroup(
+                    Groups(
+                        title = "Security",
+                        icon = R.drawable.ic_bar_chart,
+                        color = R.color.blue
+                    )
+                )
+
+
                 dao.insertPassword(
                     Passwords(
                         website = "W3Schools",

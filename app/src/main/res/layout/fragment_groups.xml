@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="?attr/colorOnPrimary"
     tools:context=".fragments.classes.GroupsFragment">
 
@@ -11,6 +12,7 @@
         android:layout_height="match_parent"
         android:layout_marginTop="8dp">
 
+        <!--Groups Title-->
         <TextView
             android:id="@+id/groupsTitle"
             android:layout_width="wrap_content"
@@ -21,6 +23,31 @@
             android:textColor="?attr/textBlack900"
             android:textSize="@dimen/text_800"
             android:textStyle="bold" />
+
+        <!--Group Cards RecyclerView-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/groupCardsRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/groupsTitle"
+            android:layout_marginTop="32dp" />
+
+        <!--Groups Floating Action Button-->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/mainFab"
+            android:src="@drawable/ic_baseline_group_work_24"
+            android:background="?attr/colorOnSecondary"
+            android:backgroundTint="?attr/colorOnSecondary"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="72dp"
+            app:rippleColor="?attr/colorOnPrimary"
+            app:tint="?attr/colorPrimary"
+            app:borderWidth="0dp"
+            android:contentDescription="@string/groups_fab_desc" />
 
     </RelativeLayout>
 

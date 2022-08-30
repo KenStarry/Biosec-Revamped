@@ -4,13 +4,15 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Programming/Android/Projects/Biosec/app/src/main/res/drawable/rounded_button.xml" value="0.1" />
+        <entry key="..\:/Programming/Android/Projects/Biosec/app/src/main/res/drawable/rounded_button_secondary.xml" value="0.3435" />
         <entry key="..\:/Programming/Android/Projects/Biosec/app/src/main/res/drawable/rounded_view_primary.xml" value="0.1" />
         <entry key="..\:/Programming/Android/Projects/Biosec/app/src/main/res/drawable/rounded_view_secondary.xml" value="0.1" />
-        <entry key="..\:/Programming/Android/Projects/Biosec/app/src/main/res/layout/activity_main.xml" value="0.2804617357845233" />
+        <entry key="..\:/Programming/Android/Projects/Biosec/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Programming/Android/Projects/Biosec/app/src/main/res/layout/activity_settings.xml" value="0.33" />
         <entry key="..\:/Programming/Android/Projects/Biosec/app/src/main/res/layout/activity_view_password.xml" value="0.33" />
         <entry key="..\:/Programming/Android/Projects/Biosec/app/src/main/res/layout/fragment_groups.xml" value="0.33" />
         <entry key="..\:/Programming/Android/Projects/Biosec/app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="..\:/Programming/Android/Projects/Biosec/app/src/main/res/layout/group_card.xml" value="0.33" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/drawable/ic__lock.xml" value="0.1855" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/drawable/ic_archive.xml" value="0.1265" />
         <entry key="..\:/programyzilla/android/Projects/Biosec/app/src/main/res/drawable/ic_copy.xml" value="0.1855" />
@@ -68,7 +70,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
