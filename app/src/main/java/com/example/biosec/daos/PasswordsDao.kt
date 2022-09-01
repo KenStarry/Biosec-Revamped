@@ -19,7 +19,7 @@ interface PasswordsDao {
     @Query("SELECT * FROM passwords ORDER BY website")
     fun getAllPasswords(): LiveData<List<Passwords>>
 
-    @Query("SELECT * FROM passwords WHERE website LIKE :search")
+    @Query("SELECT * FROM passwords WHERE website LIKE :search ORDER BY website")
     fun getAlphabeticalPass(search: String): LiveData<List<Passwords>>
 
     @Query("SELECT * FROM passwords WHERE id = :id")

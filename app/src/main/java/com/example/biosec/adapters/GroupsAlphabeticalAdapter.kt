@@ -1,12 +1,14 @@
 package com.example.biosec.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.biosec.R
+import com.example.biosec.activities.GroupAlphabetActivity
 import kotlinx.android.synthetic.main.group_alphabetical_card.view.*
 
 class GroupsAlphabeticalAdapter(
@@ -26,6 +28,15 @@ class GroupsAlphabeticalAdapter(
     override fun onBindViewHolder(holder: AlphabetViewHolder, position: Int) {
 
         holder.letter.text = array[position]
+
+        holder.itemView.setOnClickListener {
+            if(position != RecyclerView.NO_POSITION) {
+
+                val intent = Intent(context, GroupAlphabetActivity::class.java)
+                intent.putExtra("ALPHABET", array[position])
+                context.startActivity(intent)
+            }
+        }
     }
 
     override fun getItemCount(): Int {
@@ -37,3 +48,7 @@ class GroupsAlphabeticalAdapter(
         val letter: TextView = itemView.letter
     }
 }
+
+
+
+

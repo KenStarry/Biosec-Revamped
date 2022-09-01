@@ -5,16 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.biosec.R
 import com.example.biosec.adapters.GroupsAdapter
 import com.example.biosec.adapters.GroupsAlphabeticalAdapter
-import com.example.biosec.entities.Groups
 import com.example.biosec.viewmodels.GroupsViewModel
 import kotlinx.android.synthetic.main.fragment_groups.view.*
-import java.security.acl.Group
 
 class GroupsFragment : Fragment() {
 
