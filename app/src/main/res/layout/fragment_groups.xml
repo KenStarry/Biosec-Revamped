@@ -7,49 +7,92 @@
     android:background="?attr/colorOnPrimary"
     tools:context=".fragments.classes.GroupsFragment">
 
-    <RelativeLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="8dp">
+        android:layout_height="match_parent">
 
-        <!--Groups Title-->
-        <TextView
-            android:id="@+id/groupsTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:lines="1"
-            android:text="Groups"
-            android:textColor="?attr/textBlack900"
-            android:textSize="@dimen/text_800"
-            android:textStyle="bold" />
-
-        <!--Group Cards RecyclerView-->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/groupCardsRecyclerView"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/groupsTitle"
-            android:layout_marginTop="24dp"
-            />
-
-        <!--Groups Floating Action Button-->
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/mainFab"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:background="?attr/colorOnSecondary"
-            android:backgroundTint="?attr/colorOnSecondary"
-            android:contentDescription="@string/groups_fab_desc"
-            android:src="@drawable/ic_add"
-            app:borderWidth="0dp"
-            app:rippleColor="?attr/colorOnPrimary"
-            app:tint="?attr/colorPrimary" />
+            android:layout_marginTop="8dp">
 
-    </RelativeLayout>
+            <!--Groups Title-->
+            <TextView
+                android:id="@+id/groupsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:lines="1"
+                android:text="Groups"
+                android:textColor="?attr/textBlack900"
+                android:textSize="@dimen/text_800"
+                android:textStyle="bold" />
+
+            <!--Groups Alphabetical Title-->
+            <TextView
+                android:id="@+id/groupsAlphabetTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/groupsTitle"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:layout_marginTop="32dp"
+                android:lines="1"
+                android:text="Alphabets"
+                android:textColor="?attr/textBlack900"
+                android:textSize="@dimen/text_500"
+                android:textStyle="bold" />
+
+            <!--Groups Alphabetical Groups-->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/groupAlphabeticalRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/groupsAlphabetTitle"
+                android:layout_marginTop="24dp"
+                android:padding="16dp" />
+
+            <!--Group Cards Title-->
+            <TextView
+                android:id="@+id/groupsCardsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/groupAlphabeticalRecyclerView"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:layout_marginTop="32dp"
+                android:lines="1"
+                android:text="Cards"
+                android:textColor="?attr/textBlack900"
+                android:textSize="@dimen/text_500"
+                android:textStyle="bold" />
+
+            <!--Group Cards RecyclerView-->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/groupCardsRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="550dp"
+                android:layout_below="@id/groupsCardsTitle"
+                android:layout_marginTop="24dp" />
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <!--Groups Floating Action Button-->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/mainFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="?attr/colorOnSecondary"
+        android:backgroundTint="?attr/colorOnSecondary"
+        android:contentDescription="@string/groups_fab_desc"
+        android:src="@drawable/ic_add"
+        app:borderWidth="0dp"
+        app:rippleColor="?attr/colorOnPrimary"
+        app:tint="?attr/colorPrimary" />
 
 </FrameLayout>

@@ -53,7 +53,7 @@ class PasswordStrengthCalculator : TextWatcher {
 
             //  Must contain upper and lowercase values
             if (lowercase.value == 1 || uppercase.value == 1 || digit.value == 1 || specialChar.value == 1) {
-                if (lowercase.value == 1 && uppercase.value == 1) {
+                if (lowercase.value == 1 && uppercase.value == 1 && specialChar.value == 1) {
                     strengthColor.value = R.color.strong_pass
                     strengthLevel.value = "Strong"
                     strengthIcon.value = R.drawable.ic_strong_pass
