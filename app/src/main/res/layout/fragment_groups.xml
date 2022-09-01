@@ -30,24 +30,25 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/groupsTitle"
-            android:layout_marginTop="32dp" />
+            android:layout_marginTop="24dp"
+            />
 
         <!--Groups Floating Action Button-->
         <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/mainFab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/mainFab"
-            android:src="@drawable/ic_baseline_group_work_24"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
             android:background="?attr/colorOnSecondary"
             android:backgroundTint="?attr/colorOnSecondary"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="72dp"
-            app:rippleColor="?attr/colorOnPrimary"
-            app:tint="?attr/colorPrimary"
+            android:contentDescription="@string/groups_fab_desc"
+            android:src="@drawable/ic_add"
             app:borderWidth="0dp"
-            android:contentDescription="@string/groups_fab_desc" />
+            app:rippleColor="?attr/colorOnPrimary"
+            app:tint="?attr/colorPrimary" />
 
     </RelativeLayout>
 

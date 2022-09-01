@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="220dp"
+    android:layout_height="200dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardBackgroundColor="?attr/colorOnPrimary"
     app:cardCornerRadius="0dp"
@@ -53,7 +53,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             app:cardElevation="0dp"
-            app:cardBackgroundColor="@color/blue_light"
+            app:cardBackgroundColor="?attr/colorOnSecondary"
             app:cardCornerRadius="16dp"
             android:layout_weight="5">
 
@@ -78,7 +78,9 @@
                     <!--Group title-->
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
                         android:orientation="horizontal">
 
                         <TextView
@@ -98,6 +100,164 @@
                             android:layout_height="wrap_content"
                             android:src="@drawable/ic_more_vert"
                             app:tint="?attr/textBlack300"/>
+
+                    </LinearLayout>
+
+                    <!--Group Passwords count-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:gravity="center_vertical"
+                        android:layout_weight="2"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:text="35"
+                            android:textStyle="bold"
+                            android:textSize="32sp"
+                            android:textColor="?attr/textBlack500"/>
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="passwords"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:textColor="?attr/textBlack300"/>
+
+                    </LinearLayout>
+
+                    <!--Group Passwords state-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <!--Weak Passwords-->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:orientation="horizontal">
+
+                            <RelativeLayout
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_marginEnd="4dp"
+                                android:background="@drawable/rounded_button_secondary">
+
+                                <ImageView
+                                    android:layout_width="14dp"
+                                    android:layout_height="14dp"
+                                    android:layout_centerInParent="true"
+                                    android:src="@drawable/ic_weak_pass" />
+                            </RelativeLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0"
+                                android:textColor="?attr/textBlack300"
+                                android:textSize="@dimen/text_100"
+                                android:textStyle="bold"/>
+
+                        </LinearLayout>
+
+                        <!--Medium Passwords-->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:orientation="horizontal">
+
+                            <RelativeLayout
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_marginEnd="4dp"
+                                android:background="@drawable/rounded_button_secondary">
+
+                                <ImageView
+                                    android:layout_width="14dp"
+                                    android:layout_height="14dp"
+                                    android:layout_centerInParent="true"
+                                    android:src="@drawable/ic_medium_pass" />
+                            </RelativeLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0"
+                                android:textColor="?attr/textBlack300"
+                                android:textSize="@dimen/text_100"
+                                android:textStyle="bold"/>
+
+                        </LinearLayout>
+
+                        <!--Strong Passwords-->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:orientation="horizontal">
+
+                            <RelativeLayout
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_marginEnd="4dp"
+                                android:background="@drawable/rounded_button_secondary">
+
+                                <ImageView
+                                    android:layout_width="14dp"
+                                    android:layout_height="14dp"
+                                    android:layout_centerInParent="true"
+                                    android:src="@drawable/ic_strong_pass" />
+                            </RelativeLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0"
+                                android:textColor="?attr/textBlack300"
+                                android:textSize="@dimen/text_100"
+                                android:textStyle="bold"/>
+
+                        </LinearLayout>
+
+                        <!--Certified Passwords-->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RelativeLayout
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_marginEnd="4dp"
+                                android:background="@drawable/rounded_button_secondary">
+
+                                <ImageView
+                                    android:layout_width="14dp"
+                                    android:layout_height="14dp"
+                                    android:layout_centerInParent="true"
+                                    android:src="@drawable/ic_verified" />
+
+                            </RelativeLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0"
+                                android:textColor="?attr/textBlack300"
+                                android:textSize="@dimen/text_100"
+                                android:textStyle="bold"/>
+
+                        </LinearLayout>
 
                     </LinearLayout>
 
