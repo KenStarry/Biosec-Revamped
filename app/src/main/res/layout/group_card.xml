@@ -18,6 +18,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:paddingTop="14dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:layout_weight="1">
 
             <!--Image View-->
@@ -52,22 +54,17 @@
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            app:cardElevation="0dp"
+            app:cardElevation="4dp"
             app:cardBackgroundColor="?attr/colorOnSecondary"
-            app:cardCornerRadius="16dp"
+            app:cardCornerRadius="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
             android:layout_weight="5">
 
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-
-                <!--Watermark Image-->
-<!--                <ImageView-->
-<!--                    android:layout_width="150dp"-->
-<!--                    android:layout_height="150dp"-->
-<!--                    android:layout_gravity="center"-->
-<!--                    android:src="@drawable/ic_bar_chart"-->
-<!--                    app:tint="?attr/textBlack100Trans"/>-->
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -153,8 +150,8 @@
                                 android:background="@drawable/rounded_button_secondary">
 
                                 <ImageView
-                                    android:layout_width="14dp"
-                                    android:layout_height="14dp"
+                                    android:layout_width="12dp"
+                                    android:layout_height="12dp"
                                     android:layout_centerInParent="true"
                                     android:src="@drawable/ic_weak_pass" />
                             </RelativeLayout>
@@ -183,8 +180,8 @@
                                 android:background="@drawable/rounded_button_secondary">
 
                                 <ImageView
-                                    android:layout_width="14dp"
-                                    android:layout_height="14dp"
+                                    android:layout_width="12dp"
+                                    android:layout_height="12dp"
                                     android:layout_centerInParent="true"
                                     android:src="@drawable/ic_medium_pass" />
                             </RelativeLayout>
@@ -213,8 +210,8 @@
                                 android:background="@drawable/rounded_button_secondary">
 
                                 <ImageView
-                                    android:layout_width="14dp"
-                                    android:layout_height="14dp"
+                                    android:layout_width="12dp"
+                                    android:layout_height="12dp"
                                     android:layout_centerInParent="true"
                                     android:src="@drawable/ic_strong_pass" />
                             </RelativeLayout>
@@ -242,8 +239,8 @@
                                 android:background="@drawable/rounded_button_secondary">
 
                                 <ImageView
-                                    android:layout_width="14dp"
-                                    android:layout_height="14dp"
+                                    android:layout_width="12dp"
+                                    android:layout_height="12dp"
                                     android:layout_centerInParent="true"
                                     android:src="@drawable/ic_verified" />
 

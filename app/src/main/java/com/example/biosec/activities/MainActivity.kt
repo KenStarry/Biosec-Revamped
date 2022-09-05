@@ -35,6 +35,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationBarItemView
 import com.google.android.material.navigation.NavigationBarView
 import com.google.android.material.snackbar.Snackbar
+import com.makeramen.roundedimageview.RoundedImageView
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListener {
@@ -61,6 +62,12 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
         toolbar = findViewById(R.id.mainToolbar)
         setSupportActionBar(toolbar)
         supportActionBar!!.title = ""
+
+        val toolbarImage = toolbar.findViewById<RoundedImageView>(R.id.mainToolbarImage)
+        toolbarImage.setOnClickListener {
+            Toast.makeText(this, "image Clicked", Toast.LENGTH_SHORT).show()
+        }
+
 
         //  Bottom Navigation View
         bottomNavBar.setOnItemSelectedListener(this)

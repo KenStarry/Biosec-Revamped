@@ -28,7 +28,7 @@ class GroupAlphabetActivity : AppCompatActivity(), PasswordClickedInterface {
 
         val toolbar: Toolbar = findViewById(R.id.viewAlphabetToolbar)
         setSupportActionBar(toolbar)
-        supportActionBar!!.title = ""
+        supportActionBar!!.title = "Alphabetical View"
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
         initializeVariables()

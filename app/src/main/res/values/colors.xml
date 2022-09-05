@@ -50,7 +50,7 @@
 
     <!--Light Mode-->
     <color name="white">#FFFFFFFF</color>
-    <color name="white_light">#F3F3F3</color>
+    <color name="white_light">#FCFEFF</color>
     <color name="text_black_900">#000000</color>
     <color name="text_black_700">#121212</color>
     <color name="text_black_500">#2A2A2A</color>

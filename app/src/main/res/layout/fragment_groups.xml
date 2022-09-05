@@ -49,7 +49,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/groupsAlphabetTitle"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="16dp"
                 android:padding="16dp" />
 
             <!--Group Cards Title-->
@@ -73,7 +73,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="550dp"
                 android:layout_below="@id/groupsCardsTitle"
-                android:layout_marginTop="24dp" />
+                android:layout_marginTop="16dp" />
 
         </RelativeLayout>
 
@@ -87,12 +87,12 @@
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:background="?attr/colorOnSecondary"
-        android:backgroundTint="?attr/colorOnSecondary"
+        android:background="?attr/colorPrimary"
+        android:backgroundTint="?attr/colorPrimary"
         android:contentDescription="@string/groups_fab_desc"
         android:src="@drawable/ic_add"
         app:borderWidth="0dp"
         app:rippleColor="?attr/colorOnPrimary"
-        app:tint="?attr/colorPrimary" />
+        app:tint="?attr/colorOnPrimary" />
 
 </FrameLayout>
